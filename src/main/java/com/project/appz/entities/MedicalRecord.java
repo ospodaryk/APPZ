@@ -22,7 +22,7 @@ import java.util.List;
 public class MedicalRecord {
     @Id
     @Column(name = "record_id")
-    String recordId;
+    Long recordId;
 
     @ManyToOne
     @JoinColumn(name = "patient_id")

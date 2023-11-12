@@ -20,7 +20,7 @@ import java.util.Date;
 public class Notification {
     @Id
     @Column(name = "notification_id")
-    String notificationId;
+    Long notificationId;
 
     @NotBlank
     @Column(name = "message")

@@ -10,6 +10,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 @Data
 @Builder
@@ -37,7 +39,9 @@ public class User {
     @NotBlank
     @Column(name = "email")
     private String email;
-
+    @OneToMany
+    @JoinColumn(name = "medical_record")
+    List<MedicalRecord> medicalRecords;
 
     public void updateContactInfo(String phoneNumber, String email) {
         // Implementation
