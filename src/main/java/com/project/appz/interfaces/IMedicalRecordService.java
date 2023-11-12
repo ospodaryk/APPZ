@@ -5,14 +5,20 @@ import com.project.appz.entities.User;
 import com.project.appz.enums.Disease;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public interface IMedicalRecordService {
     void createRecord(MedicalRecord record);
 
     void updateRecord(MedicalRecord record);
 
-    MedicalRecord getRecordByPatient(User patient);
+    List<MedicalRecord>  getRecordByPatient(User patient);
 
     List<MedicalRecord> getRecordByDiseaseAndPatient(User patient, Disease disease);
+    public List<MedicalRecord> sortByDate(User patient, Disease disease) ;
+
+    public List<MedicalRecord> sortByDate(User patient) ;
+    public List<MedicalRecord> sortByDisease(User patient) ;
 }

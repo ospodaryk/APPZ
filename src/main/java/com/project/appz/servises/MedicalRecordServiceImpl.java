@@ -7,7 +7,9 @@ import com.project.appz.interfaces.IMedicalRecordService;
 import com.project.appz.repository.MedicalRecordRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MedicalRecordServiceImpl implements IMedicalRecordService {
@@ -31,7 +33,7 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
     }
 
     @Override
-    public MedicalRecord getRecordByPatient(User patient) {
+    public List<MedicalRecord> getRecordByPatient(User patient) {
         if(patient==null){
             throw new IllegalArgumentException();
         }
@@ -50,5 +52,25 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
         //check if user and  disease exist
 //        return recordRepository.findByUserAndDisease(patient);
         return null;
+    }
+    @Override
+    public List<MedicalRecord> sortByDate(User patient, Disease disease) {
+        return getRecordByDiseaseAndPatient(patient, disease).stream()
+                .sorted(Comparator.comparing(MedicalRecord::getCreatedTime))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MedicalRecord> sortByDate(User patient) {
+        return getRecordByPatient(patient).stream()
+                .sorted(Comparator.comparing(MedicalRecord::getCreatedTime))
+                .collect(Collectors.toList());
+    }
+    @Override
+    public List<MedicalRecord> sortByDisease(User patient) {
+        return getRecordByPatient(patient)
+                .stream()
+                .sorted(Comparator.comparing(MedicalRecord::getDisease))
+                .collect(Collectors.toList());
     }
 }
