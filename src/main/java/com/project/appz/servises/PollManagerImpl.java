@@ -5,10 +5,12 @@ import com.project.appz.entities.ResponsePoll;
 import com.project.appz.entities.User;
 import com.project.appz.interfaces.IPollManager;
 import com.project.appz.utils.Logger;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class PollManagerImpl implements IPollManager {
     Logger logger;
 
