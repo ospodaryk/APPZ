@@ -3,11 +3,8 @@ package com.project.appz;
 import com.project.appz.entities.MedicalRecord;
 import com.project.appz.entities.User;
 import com.project.appz.enums.Disease;
-import com.project.appz.interfaces.IMedicalRecordService;
 import com.project.appz.repository.MedicalRecordRepository;
 import com.project.appz.servises.MedicalRecordServiceImpl;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,7 +16,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 

@@ -1,9 +1,7 @@
 package com.project.appz.entities;
 
 import com.project.appz.enums.Disease;
-import jakarta.persistence.Entity;
 import jakarta.persistence.*;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -43,6 +41,7 @@ public class MedicalRecord {
 
     @Column(name = "disease")
     Disease disease;
+
     public void addNote(String note) {
         // Implementation
     }

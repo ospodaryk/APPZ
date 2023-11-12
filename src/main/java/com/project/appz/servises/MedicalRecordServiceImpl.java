@@ -17,7 +17,7 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
 
     @Override
     public void createRecord(MedicalRecord record) {
-        if(record==null){
+        if (record == null) {
             throw new IllegalArgumentException();
         }
         recordRepository.save(record);
@@ -25,7 +25,7 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
 
     @Override
     public void updateRecord(MedicalRecord record) {
-        if(record==null){
+        if (record == null) {
             throw new IllegalArgumentException();
         }
         //check if exist
@@ -34,7 +34,7 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
 
     @Override
     public List<MedicalRecord> getRecordByPatient(User patient) {
-        if(patient==null){
+        if (patient == null) {
             throw new IllegalArgumentException();
         }
         // Implementation to retrieve a medical record by patient
@@ -45,7 +45,7 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
 
     @Override
     public List<MedicalRecord> getRecordByDiseaseAndPatient(User patient, Disease disease) {
-        if(patient==null||disease==null){
+        if (patient == null || disease == null) {
             throw new IllegalArgumentException();
         }
         // Implementation to retrieve a medical record by patient
@@ -53,6 +53,7 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
 //        return recordRepository.findByUserAndDisease(patient);
         return null;
     }
+
     @Override
     public List<MedicalRecord> sortByDate(User patient, Disease disease) {
         return getRecordByDiseaseAndPatient(patient, disease).stream()
@@ -66,6 +67,7 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
                 .sorted(Comparator.comparing(MedicalRecord::getCreatedTime))
                 .collect(Collectors.toList());
     }
+
     @Override
     public List<MedicalRecord> sortByDisease(User patient) {
         return getRecordByPatient(patient)

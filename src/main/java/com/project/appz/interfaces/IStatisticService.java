@@ -3,7 +3,6 @@ package com.project.appz.interfaces;
 import com.project.appz.entities.Poll;
 import com.project.appz.entities.User;
 import com.project.appz.enums.Disease;
-import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;

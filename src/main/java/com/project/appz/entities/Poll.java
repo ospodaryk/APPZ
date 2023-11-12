@@ -9,9 +9,6 @@ import lombok.NoArgsConstructor;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.*;
-import javax.validation.constraints.NotBlank;
-
 @Data
 @Builder
 @AllArgsConstructor

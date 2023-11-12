@@ -9,8 +9,8 @@ import com.project.appz.enums.Specialization;
 import java.time.LocalDateTime;
 import java.util.Collections;
 
-public  final class ModelUtils {
-    public static final User getUser(){
+public final class ModelUtils {
+    public static final User getUser() {
         return User.builder()
                 .name("Taras")
                 .surname("Shevchenko")
@@ -18,7 +18,8 @@ public  final class ModelUtils {
                 .email("sheva@gmail.com")
                 .build();
     }
-    public static final Doctor getDoctor(){
+
+    public static final Doctor getDoctor() {
         return Doctor.builder()
                 .name("Taras")
                 .specialization(Specialization.DERMATOLOGY)
@@ -27,7 +28,8 @@ public  final class ModelUtils {
                 .email("sheva@gmail.com")
                 .build();
     }
-    public static final MedicalRecord getMedicalRecord_ACNE(){
+
+    public static final MedicalRecord getMedicalRecord_ACNE() {
         return MedicalRecord.builder()
                 .createdTime(LocalDateTime.now())
                 .diagnoses(Collections.emptyList())
@@ -37,7 +39,8 @@ public  final class ModelUtils {
                 .patientId(getUser())
                 .build();
     }
-    public static final MedicalRecord getMedicalRecordLastYear_ACNE(){
+
+    public static final MedicalRecord getMedicalRecordLastYear_ACNE() {
         return MedicalRecord.builder()
                 .createdTime(LocalDateTime.MAX.minusYears(1))
                 .diagnoses(Collections.emptyList())
@@ -47,7 +50,8 @@ public  final class ModelUtils {
                 .patientId(getUser())
                 .build();
     }
-    public static final MedicalRecord getMedicalRecord_ECZEMA(){
+
+    public static final MedicalRecord getMedicalRecord_ECZEMA() {
         return MedicalRecord.builder()
                 .createdTime(LocalDateTime.MAX.minusYears(1))
                 .diagnoses(Collections.emptyList())

@@ -1,9 +1,7 @@
 package com.project.appz.entities;
 
 import com.project.appz.enums.Specialization;
-import jakarta.persistence.Entity;
 import jakarta.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,31 +15,25 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @Entity
 @Table
-public class Doctor  {
+public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long doctorId;
-
-    @NotBlank
-    @Column(name = "name")
-    private String name;
-
-    @NotBlank
-    @Column(name = "surname")
-    private String surname;
-
-    @NotBlank
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-    @NotBlank
-    @Column(name = "email")
-    private String email;
-
     @NotBlank
     @Column(name = "specialization")
     Specialization specialization;
-
+    @NotBlank
+    @Column(name = "name")
+    private String name;
+    @NotBlank
+    @Column(name = "surname")
+    private String surname;
+    @NotBlank
+    @Column(name = "phone_number")
+    private String phoneNumber;
+    @NotBlank
+    @Column(name = "email")
+    private String email;
 
     public void createPoll(Poll poll) {
         // Implementation
