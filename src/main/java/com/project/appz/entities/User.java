@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,26 +16,31 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name = "user")
 public class User {
-    @OneToMany
-    @JoinColumn(name = "medical_record")
-    List<MedicalRecord> medicalRecords;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long id;
+
     @NotBlank
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
+
     @NotBlank
-    @Column(name = "surname")
+    @Column(name = "surname", nullable = false)
     private String surname;
+
     @NotBlank
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
+
     @NotBlank
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
+
+    @OneToMany
+    private List<MedicalRecord> medicalRecords = new ArrayList<>();
+
 
     public void updateContactInfo(String phoneNumber, String email) {
         // Implementation

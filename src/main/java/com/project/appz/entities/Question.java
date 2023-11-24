@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -18,14 +19,18 @@ import java.util.List;
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long questionId;
+    private Long id;
 
     @NotBlank
-    @Column(name = "question_text")
-    String questionText;
+    @Column(name = "question_text", nullable = false)
+    private String questionText;
 
-    @ElementCollection
-    List<String> answers;
+    @OneToMany(mappedBy = "question")
+    private List<Answer> answers = new ArrayList<>();
+
+    @ManyToMany
+    private List<Poll> polls = new ArrayList<>();
+    ;
 
     // New methods
     public void setAnswers(List<String> answers) {

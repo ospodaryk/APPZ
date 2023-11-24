@@ -14,17 +14,17 @@ public final class ModelUtils {
         return User.builder()
                 .name("Taras")
                 .surname("Shevchenko")
-                .phoneNumber("+380979500066")
+                .phoneNumber("+380009500066")
                 .email("sheva@gmail.com")
                 .build();
     }
 
     public static final Doctor getDoctor() {
         return Doctor.builder()
-                .name("Taras")
+                .name("Oksana")
                 .specialization(Specialization.DERMATOLOGY)
-                .surname("Shevchenko")
-                .phoneNumber("+380979500066")
+                .surname("Doctor")
+                .phoneNumber("+380009500066")
                 .email("sheva@gmail.com")
                 .build();
     }

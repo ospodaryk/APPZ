@@ -1,9 +1,6 @@
 package com.project.appz.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,19 +17,18 @@ import java.util.Date;
 @Table(name = "notification")
 public class Notification {
     @Id
-    @Column(name = "notification_id")
-    Long notificationId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotBlank
-    @Column(name = "message")
-    String message;
+    @Column(name = "message", nullable = false)
+    private String message;
 
     @Column(name = "scheduled_time")
-    Date scheduledTime;
+    private Date scheduledTime;
 
     @Column(name = "checked")
-    Boolean checked;
-
+    private Boolean checked;
 
     public void schedule() {
         // Implementation

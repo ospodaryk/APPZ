@@ -6,7 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -18,18 +20,18 @@ import java.util.Set;
 public class Poll {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long pollId;
+    private Long id;
 
-    @OneToMany(mappedBy = "poll")
-    Set<Question> questions;
+    @ManyToMany
+    private List<Question> questions = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    User user;
+    private User user;
 
     @OneToOne
     @JoinColumn(name = "notification_id")
-    Notification notification;
+    private Notification notification;
 
     public void addQuestion(Question question) {
         // Implementation

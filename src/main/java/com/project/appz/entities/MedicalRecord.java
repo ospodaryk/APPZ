@@ -1,6 +1,5 @@
 package com.project.appz.entities;
 
-import com.project.appz.enums.Disease;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,31 +15,27 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name = "medical_record")
 public class MedicalRecord {
     @Id
-    @Column(name = "record_id")
-    Long recordId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "patient_id")
-    User patientId;
+    private User patient;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
-    Doctor doctor;
+    private Doctor doctor;
 
-    @Column(name = "created_time")
-    LocalDateTime createdTime;
+    @Column(name = "created_time", nullable = false)
+    private LocalDateTime createdTime;
 
-    @ElementCollection
-    List<String> doctorNotes;
-
-    @ElementCollection
-    List<Disease> diagnoses;
+    @Column(name = "doctor_notes")
+    private String doctorNotes;
 
     @Column(name = "disease")
-    Disease disease;
+    private String disease;
 
     public void addNote(String note) {
         // Implementation

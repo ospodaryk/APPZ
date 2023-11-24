@@ -6,30 +6,27 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "response_poll")
-public class ResponsePoll {
+@Table(name = "answer")
+public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Column(name = "answer_text", nullable = false)
+    private String answerText;
+
+    @Column(name = "is_chosen")
+    private Boolean isChosen;
+
     @ManyToOne
-    @JoinColumn(name = "poll_id")
-    private Poll poll;
-
-    @Column(name = "result")
-    private Long result;
-
-    public void submitResponse() {
-        // Implementation
-    }
-
-    public Long getResponseDetails() {
-        // Implementation
-        return 0L;
-    }
+    @JoinColumn(name = "question_id")
+    private Question question;
 }
