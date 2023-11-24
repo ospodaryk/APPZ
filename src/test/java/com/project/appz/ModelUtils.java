@@ -7,7 +7,6 @@ import com.project.appz.enums.Disease;
 import com.project.appz.enums.Specialization;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 
 public final class ModelUtils {
     public static final User getUser() {
@@ -22,7 +21,7 @@ public final class ModelUtils {
     public static final Doctor getDoctor() {
         return Doctor.builder()
                 .name("Oksana")
-                .specialization(Specialization.DERMATOLOGY)
+                .specialization(Specialization.DERMATOLOGY.getDisplayName())
                 .surname("Doctor")
                 .phoneNumber("+380009500066")
                 .email("sheva@gmail.com")
@@ -32,33 +31,30 @@ public final class ModelUtils {
     public static final MedicalRecord getMedicalRecord_ACNE() {
         return MedicalRecord.builder()
                 .createdTime(LocalDateTime.now())
-                .diagnoses(Collections.emptyList())
-                .doctorNotes(Collections.emptyList())
+                .doctorNotes("")
                 .doctor(getDoctor())
-                .disease(Disease.ACNE)
-                .patientId(getUser())
+                .disease(Disease.ACNE.getDisplayName())
+                .patient(getUser())
                 .build();
     }
 
     public static final MedicalRecord getMedicalRecordLastYear_ACNE() {
         return MedicalRecord.builder()
                 .createdTime(LocalDateTime.MAX.minusYears(1))
-                .diagnoses(Collections.emptyList())
-                .doctorNotes(Collections.emptyList())
+                .doctorNotes("")
                 .doctor(getDoctor())
-                .disease(Disease.ACNE)
-                .patientId(getUser())
+                .disease(Disease.ACNE.getDisplayName())
+                .patient(getUser())
                 .build();
     }
 
     public static final MedicalRecord getMedicalRecord_ECZEMA() {
         return MedicalRecord.builder()
                 .createdTime(LocalDateTime.MAX.minusYears(1))
-                .diagnoses(Collections.emptyList())
-                .doctorNotes(Collections.emptyList())
+                .doctorNotes("")
                 .doctor(getDoctor())
-                .disease(Disease.ECZEMA)
-                .patientId(getUser())
+                .disease(Disease.ECZEMA.getDisplayName())
+                .patient(getUser())
                 .build();
     }
 }

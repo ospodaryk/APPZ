@@ -28,8 +28,7 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
         if (record == null) {
             throw new IllegalArgumentException();
         }
-        //check if exist
-//        recordRepository.save(record);
+        recordRepository.save(record);
     }
 
     @Override
@@ -37,10 +36,7 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
         if (patient == null) {
             throw new IllegalArgumentException();
         }
-        // Implementation to retrieve a medical record by patient
-        //check if user exist
-//        return recordRepository.findByUser(patient);
-        return null;
+        return recordRepository.findByPatientId(patient.getId());
     }
 
     @Override
@@ -48,10 +44,7 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
         if (patient == null || disease == null) {
             throw new IllegalArgumentException();
         }
-        // Implementation to retrieve a medical record by patient
-        //check if user and  disease exist
-//        return recordRepository.findByUserAndDisease(patient);
-        return null;
+        return recordRepository.findByPatientIdAndDiseaseLike(patient.getId(), disease.getDisplayName());
     }
 
     @Override
