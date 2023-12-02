@@ -1,12 +1,13 @@
 package com.project.appz.entities;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,16 @@ public class User {
     @OneToMany
     private List<MedicalRecord> medicalRecords = new ArrayList<>();
 
+
+    @Pattern(regexp = ".*\\d.*", message = "Must contain at least one digit")
+    @Pattern(regexp = ".*[A-Z].*", message = "Must contain at least one uppercase letter")
+    @Pattern(regexp = ".*[a-z].*", message = "Must contain at least one lowercase letter")
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     public void updateContactInfo(String phoneNumber, String email) {
         // Implementation
