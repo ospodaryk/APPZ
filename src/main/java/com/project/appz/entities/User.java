@@ -33,9 +33,10 @@ public class User {
     @Column(name = "phone_number" )
     private String phoneNumber;
 
-  
+
     @Column(name = "email" )
     private String email;
+
 
     @OneToMany
     private List<MedicalRecord> medicalRecords = new ArrayList<>();
@@ -54,5 +55,10 @@ public class User {
     public String getFullName() {
         // Implementation
         return name + " " + surname;
+    }
+
+    public User(Long id, String name) {
+        this.id = id;
+        this.name = name;
     }
 }

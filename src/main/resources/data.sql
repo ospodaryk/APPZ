@@ -1,24 +1,28 @@
-INSERT INTO public.users (id, email, name, password, phone_number, surname)
+INSERT INTO roles (id, name)
+VALUES (1, 'ADMIN');
+INSERT INTO roles (id, name)
+VALUES (2, 'USER');
+INSERT INTO public.users (id, email, name, password, phone_number, surname, role_id)
 VALUES (DEFAULT, 'oksanaspodaryk@mail.com', 'Oksana', '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6',
-        '380501234567', 'Spodaryk'),
+        '380501234567', 'Spodaryk', 1),
        (DEFAULT, 'dariiamartyniuk@inbox.com', 'Dariia', '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6',
-        '380501234568', 'Martyniuk'),
+        '380501234568', 'Martyniuk', 1),
        (DEFAULT, 'artemhuk@mail.com', 'Artem', '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6',
-        '380501234569', 'Huk'),
+        '380501234569', 'Huk', 1),
        (DEFAULT, 'zaharboiko@inbox.com', 'Zahar', '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6',
-        '380501234570', 'Boiko'),
+        '380501234570', 'Boiko', 1),
        (DEFAULT, 'ivanpetrov@mail.com', 'Ivan', '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6',
-        '380501234571', 'Petrov'),
+        '380501234571', 'Petrov', 1),
        (DEFAULT, 'annasmirnova@inbox.com', 'Anna', '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6',
-        '380501234572', 'Smirnova'),
+        '380501234572', 'Smirnova', 1),
        (DEFAULT, 'oleksiykovalenko@mail.com', 'Oleksiy', '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6',
-        '380501234573', 'Kovalenko'),
+        '380501234573', 'Kovalenko', 1),
        (DEFAULT, 'mariyasydorenko@inbox.com', 'Mariya', '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6',
-        '380501234574', 'Sydorenko'),
+        '380501234574', 'Sydorenko', 1),
        (DEFAULT, 'serhiybondarenko@mail.com', 'Serhiy', '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6',
-        '380501234575', 'Bondarenko'),
+        '380501234575', 'Bondarenko', 1),
        (DEFAULT, 'yuliyavasylchenko@inbox.com', 'Yuliya',
-        '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6', '380501234576', 'Vasylchenko');
+        '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6', '380501234576', 'Vasylchenko', 1);
 INSERT INTO public.doctor (id, email, name, phone_number, specialization, surname, password)
 VALUES (DEFAULT, 'emily.watson@healthmail.com', 'Emily', '380601234567', 'Cardiology', 'Watson',
         '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6'),
