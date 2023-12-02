@@ -19,8 +19,8 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Column(name = "answer_text", nullable = false)
+  
+    @Column(name = "answer_text" )
     private String answerText;
 
     @Column(name = "is_chosen")

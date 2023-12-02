@@ -20,8 +20,8 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Column(name = "message", nullable = false)
+  
+    @Column(name = "message" )
     private String message;
 
     @Column(name = "scheduled_time")

@@ -18,7 +18,7 @@ public class Cabinet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id" )
     private Long id;
 
 
@@ -32,7 +32,7 @@ public class Cabinet {
     private User user;
 
 
-    @Column(name = "disease", nullable = false)
+    @Column(name = "disease" )
     private String disease;
 
 

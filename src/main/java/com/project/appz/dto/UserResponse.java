@@ -9,12 +9,12 @@ import java.util.List;
 
 @Data
 public class UserResponse {
-    private String firstName;
+    private String name;
     private List<Integer> myMarks = new ArrayList<>();
 
     public UserResponse(User user) {
         this();
-        this.firstName = user.getName();
+        this.name = user.getName();
     }
 
     public UserResponse() {
@@ -28,7 +28,7 @@ public class UserResponse {
     }
 
     public void copyUser(User user) {
-        this.firstName = user.getName();
+        this.name = user.getName();
     }
 
     public Integer sum() {

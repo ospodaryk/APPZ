@@ -21,8 +21,8 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Column(name = "question_text", nullable = false)
+  
+    @Column(name = "question_text" )
     private String questionText;
 
     @OneToMany(mappedBy = "question")

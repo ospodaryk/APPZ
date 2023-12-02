@@ -27,7 +27,7 @@
                       th:action="@{/logout}">
                     <a class="navbar-brand"> Привіт, <a class="navbar-brand"
                                                         th:href="@{|/users/${#authentication.principal.id}/read|}"><span
-                            sec:authentication="principal.firstName">Name</span></a></a>
+                            sec:authentication="principal.name">Name</span></a></a>
 
                     <button class="btn btn-info mybut" type="submit">Вийти</button>
                 </form>

@@ -28,7 +28,7 @@ public class MedicalRecord {
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
-    @Column(name = "created_time", nullable = false)
+    @Column(name = "created_time" )
     private LocalDateTime createdTime;
 
     @Column(name = "doctor_notes")

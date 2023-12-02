@@ -21,7 +21,7 @@ public class Security implements UserDetails {
     private static final Logger logger = LoggerFactory.getLogger(Security.class);
 
     private long id;
-    private String firstName;
+    private String name;
     private String username;
     private String password;
     private List<GrantedAuthority> authorities;
@@ -29,7 +29,7 @@ public class Security implements UserDetails {
 
     public Security(User user) {
         this.id = user.getId();
-        this.firstName = user.getName();
+        this.name = user.getName();
         this.username = user.getEmail();
         this.password = user.getPassword();
         this.authorities = List.of(new SimpleGrantedAuthority("USER"));
