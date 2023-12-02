@@ -1,6 +1,6 @@
 package com.project.appz.repository;
 
-import com.project.appz.entities.MedicalRecord;
+import com.project.appz.models.entities.MedicalRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

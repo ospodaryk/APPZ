@@ -1,4 +1,4 @@
-package com.project.appz.entities;
+package com.project.appz.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,7 +28,7 @@ public class MedicalRecord {
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
-    @Column(name = "created_time" )
+    @Column(name = "created_time")
     private LocalDateTime createdTime;
 
     @Column(name = "doctor_notes")

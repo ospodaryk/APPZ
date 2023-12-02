@@ -1,8 +1,8 @@
 package com.project.appz.service.impl;
 
-import com.project.appz.entities.MedicalRecord;
-import com.project.appz.entities.User;
-import com.project.appz.enums.Disease;
+import com.project.appz.models.entities.MedicalRecord;
+import com.project.appz.models.entities.User;
+import com.project.appz.models.enums.Disease;
 import com.project.appz.repository.MedicalRecordRepository;
 import com.project.appz.service.MedicalRecordService;
 import org.springframework.stereotype.Service;

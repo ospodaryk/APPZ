@@ -1,6 +1,6 @@
 package com.project.appz.service;
 
-import com.project.appz.entities.Notification;
+import com.project.appz.models.entities.Notification;
 
 import java.util.Date;
 

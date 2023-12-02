@@ -1,4 +1,4 @@
-package com.project.appz.entities;
+package com.project.appz.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

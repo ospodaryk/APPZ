@@ -1,7 +1,7 @@
 package com.project.appz.service.impl;
 
 
-import com.project.appz.entities.Notification;
+import com.project.appz.models.entities.Notification;
 import com.project.appz.service.NotificationService;
 import com.project.appz.utils.Logger;
 import org.springframework.stereotype.Service;

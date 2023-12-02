@@ -1,8 +1,8 @@
 package com.project.appz.service.impl;
 
-import com.project.appz.entities.Poll;
-import com.project.appz.entities.User;
-import com.project.appz.enums.Disease;
+import com.project.appz.models.entities.Poll;
+import com.project.appz.models.entities.User;
+import com.project.appz.models.enums.Disease;
 import com.project.appz.service.StatisticService;
 import com.project.appz.utils.Logger;
 import org.springframework.stereotype.Service;

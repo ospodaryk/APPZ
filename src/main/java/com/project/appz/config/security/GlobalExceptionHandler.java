@@ -1,6 +1,5 @@
-package com.project.appz.security;
+package com.project.appz.config.security;
 
-import com.project.appz.security.JwtTokenRepository;
 import lombok.Getter;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.session.SessionAuthenticationException;
@@ -24,7 +23,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler({AuthenticationException.class, MissingCsrfTokenException.class, InvalidCsrfTokenException.class, SessionAuthenticationException.class})
-    public ErrorInfo handleAuthenticationException(RuntimeException ex, HttpServletRequest request, HttpServletResponse response){
+    public ErrorInfo handleAuthenticationException(RuntimeException ex, HttpServletRequest request, HttpServletResponse response) {
         this.tokenRepository.clearToken(response);
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         return new ErrorInfo(UrlUtils.buildFullRequestUrl(request), "error.authorization");

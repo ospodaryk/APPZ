@@ -1,8 +1,8 @@
 package com.project.appz.service;
 
-import com.project.appz.entities.MedicalRecord;
-import com.project.appz.entities.User;
-import com.project.appz.enums.Disease;
+import com.project.appz.models.entities.MedicalRecord;
+import com.project.appz.models.entities.User;
+import com.project.appz.models.enums.Disease;
 
 import java.util.List;
 

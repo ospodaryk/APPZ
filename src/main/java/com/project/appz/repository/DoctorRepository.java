@@ -1,6 +1,6 @@
 package com.project.appz.repository;
 
-import com.project.appz.entities.Doctor;
+import com.project.appz.models.entities.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

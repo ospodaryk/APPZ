@@ -1,4 +1,4 @@
-package com.project.appz.enums;
+package com.project.appz.models.enums;
 
 public enum Disease {
     COMMON_COLD("Common Cold"),

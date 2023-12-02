@@ -1,4 +1,4 @@
-package com.project.appz.security;
+package com.project.appz.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,19 +24,20 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtTokenRepository jwtTokenRepository;
+    @Autowired
+    @Qualifier("handlerExceptionResolver")
+    private HandlerExceptionResolver resolver;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(service)
                 .passwordEncoder(passwordEncoder());
     }
+
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    @Autowired
-    @Qualifier("handlerExceptionResolver")
-    private HandlerExceptionResolver resolver;
 
     @Bean
     public PasswordEncoder devPasswordEncoder() {
@@ -47,16 +48,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.NEVER)
+                .sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .and()
-                    .addFilterAt(new JwtCsrfFilter(jwtTokenRepository, resolver), CsrfFilter.class)
-                    .csrf().ignoringAntMatchers("/**")
+                .addFilterAt(new JwtCsrfFilter(jwtTokenRepository, resolver), CsrfFilter.class)
+                .csrf().ignoringAntMatchers("/**")
                 .and()
-                    .authorizeRequests()
-                    .antMatchers("/auth/login")
-                    .authenticated()
+                .authorizeRequests()
+                .antMatchers("/auth/login")
+                .authenticated()
                 .and()
-                    .httpBasic()
-                    .authenticationEntryPoint(((request, response, e) -> resolver.resolveException(request, response, null, e)));
+                .httpBasic()
+                .authenticationEntryPoint(((request, response, e) -> resolver.resolveException(request, response, null, e)));
     }
 }

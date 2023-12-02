@@ -1,4 +1,4 @@
-package com.project.appz.entities;
+package com.project.appz.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +18,7 @@ public class Cabinet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id" )
+    @Column(name = "id")
     private Long id;
 
 
@@ -32,7 +32,7 @@ public class Cabinet {
     private User user;
 
 
-    @Column(name = "disease" )
+    @Column(name = "disease")
     private String disease;
 
 

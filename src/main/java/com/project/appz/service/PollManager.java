@@ -1,8 +1,8 @@
 package com.project.appz.service;
 
-import com.project.appz.entities.Poll;
-import com.project.appz.entities.ResponsePoll;
-import com.project.appz.entities.User;
+import com.project.appz.models.entities.Poll;
+import com.project.appz.models.entities.ResponsePoll;
+import com.project.appz.models.entities.User;
 
 import java.util.List;
 

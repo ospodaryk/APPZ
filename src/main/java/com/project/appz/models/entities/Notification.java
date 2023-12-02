@@ -1,4 +1,4 @@
-package com.project.appz.entities;
+package com.project.appz.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Data
@@ -20,8 +19,8 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-  
-    @Column(name = "message" )
+
+    @Column(name = "message")
     private String message;
 
     @Column(name = "scheduled_time")

@@ -1,4 +1,4 @@
-package com.project.appz.security;
+package com.project.appz.config.security;
 
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;

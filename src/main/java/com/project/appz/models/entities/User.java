@@ -1,4 +1,4 @@
-package com.project.appz.entities;
+package com.project.appz.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,18 +22,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-  
-    @Column(name = "name" )
+
+    @Column(name = "name")
     private String name;
 
-  
-    @Column(name = "surname" )
+
+    @Column(name = "surname")
     private String surname;
-    @Column(name = "phone_number" )
+    @Column(name = "phone_number")
     private String phoneNumber;
 
 
-    @Column(name = "email" )
+    @Column(name = "email")
     private String email;
 
 
@@ -45,8 +44,13 @@ public class User {
     @Pattern(regexp = ".*\\d.*", message = "Must contain at least one digit")
     @Pattern(regexp = ".*[A-Z].*", message = "Must contain at least one uppercase letter")
     @Pattern(regexp = ".*[a-z].*", message = "Must contain at least one lowercase letter")
-    @Column(name = "password" )
+    @Column(name = "password")
     private String password;
+
+    public User(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public void updateContactInfo(String phoneNumber, String email) {
         // Implementation
@@ -55,10 +59,5 @@ public class User {
     public String getFullName() {
         // Implementation
         return name + " " + surname;
-    }
-
-    public User(Long id, String name) {
-        this.id = id;
-        this.name = name;
     }
 }

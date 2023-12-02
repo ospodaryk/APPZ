@@ -1,7 +1,7 @@
 package com.project.appz.controller;
 
-import com.project.appz.entities.User;
-import com.project.appz.security.UserSecurityService;
+import com.project.appz.config.security.UserSecurityService;
+import com.project.appz.models.entities.User;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
