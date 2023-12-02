@@ -39,7 +39,6 @@ public class Doctor {
     @Column(name = "email", nullable = false)
     private String email;
 
-
     public void createPoll(Poll poll) {
         // Implementation
     }

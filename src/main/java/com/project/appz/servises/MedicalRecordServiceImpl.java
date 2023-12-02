@@ -50,22 +50,22 @@ public class MedicalRecordServiceImpl implements IMedicalRecordService {
     @Override
     public List<MedicalRecord> sortByDate(User patient, Disease disease) {
         return getRecordByDiseaseAndPatient(patient, disease).stream()
-                .sorted(Comparator.comparing(MedicalRecord::getCreatedTime))
-                .collect(Collectors.toList());
+            .sorted(Comparator.comparing(MedicalRecord::getCreatedTime))
+            .collect(Collectors.toList());
     }
 
     @Override
     public List<MedicalRecord> sortByDate(User patient) {
         return getRecordByPatient(patient).stream()
-                .sorted(Comparator.comparing(MedicalRecord::getCreatedTime))
-                .collect(Collectors.toList());
+            .sorted(Comparator.comparing(MedicalRecord::getCreatedTime))
+            .collect(Collectors.toList());
     }
 
     @Override
     public List<MedicalRecord> sortByDisease(User patient) {
         return getRecordByPatient(patient)
-                .stream()
-                .sorted(Comparator.comparing(MedicalRecord::getDisease))
-                .collect(Collectors.toList());
+            .stream()
+            .sorted(Comparator.comparing(MedicalRecord::getDisease))
+            .collect(Collectors.toList());
     }
 }

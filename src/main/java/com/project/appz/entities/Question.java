@@ -29,8 +29,7 @@ public class Question {
     private List<Answer> answers = new ArrayList<>();
 
     @ManyToMany
-    private List<Poll> polls = new ArrayList<>();
-    ;
+    private List<Poll> polls = new ArrayList<>();;
 
     // New methods
     public void setAnswers(List<String> answers) {

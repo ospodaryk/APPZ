@@ -10,7 +10,6 @@ import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Data
 @Builder
 @AllArgsConstructor
@@ -40,7 +39,6 @@ public class User {
 
     @OneToMany
     private List<MedicalRecord> medicalRecords = new ArrayList<>();
-
 
     public void updateContactInfo(String phoneNumber, String email) {
         // Implementation
