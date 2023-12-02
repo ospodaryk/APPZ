@@ -1,10 +1,10 @@
-package com.project.appz.servises;
+package com.project.appz.service.impl;
 
 import com.project.appz.entities.MedicalRecord;
 import com.project.appz.entities.User;
 import com.project.appz.enums.Disease;
-import com.project.appz.interfaces.IMedicalRecordService;
 import com.project.appz.repository.MedicalRecordRepository;
+import com.project.appz.service.MedicalRecordService;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class MedicalRecordServiceImpl implements IMedicalRecordService {
+public class MedicalRecordServiceImpl implements MedicalRecordService {
     MedicalRecordRepository recordRepository;
 
     @Override

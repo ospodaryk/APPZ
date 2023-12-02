@@ -1,10 +1,11 @@
 package com.project.appz.entities;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Data
 @Builder
@@ -17,7 +18,7 @@ public class Cabinet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id" )
     private Long id;
 
 
@@ -31,7 +32,7 @@ public class Cabinet {
     private User user;
 
 
-    @Column(name = "disease", nullable = false)
+    @Column(name = "disease" )
     private String disease;
 
 

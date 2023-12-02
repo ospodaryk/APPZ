@@ -1,9 +1,9 @@
-package com.project.appz.servises;
+package com.project.appz.service.impl;
 
 import com.project.appz.entities.Poll;
 import com.project.appz.entities.User;
 import com.project.appz.enums.Disease;
-import com.project.appz.interfaces.IStatisticService;
+import com.project.appz.service.StatisticService;
 import com.project.appz.utils.Logger;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class StatisticServiceImpl implements IStatisticService {
+public class StatisticServiceImpl implements StatisticService {
     Logger logger;
 
     @Override

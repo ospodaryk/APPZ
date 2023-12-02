@@ -1,19 +1,36 @@
 package com.project.appz.utils;
 
 public class Logger {
-    private static Logger instance;
-
-    private Logger() {
-    }
+    private static volatile Logger instance;
 
     public static Logger getInstance() {
-        if (instance == null) {
-            instance = new Logger();
+        Logger result = instance;
+
+        if (result != null) {
+            return result;
         }
-        return instance;
+
+        synchronized (Logger.class) {
+            if (instance == null) {
+                instance = new Logger();
+            }
+            return instance;
+        }
     }
 
-    public void log(String message) {
-        // Implementation
+    public void log(String method, String message) {
+        // logging
+    }
+
+    public void debug(String method, String message) {
+        // logging
+    }
+
+    public void error(String method, String message) {
+        // logging
+    }
+
+    public void warn(String method, String message) {
+        // logging
     }
 }

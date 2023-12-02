@@ -1,4 +1,4 @@
-package com.project.appz.interfaces;
+package com.project.appz.service;
 
 import com.project.appz.entities.MedicalRecord;
 import com.project.appz.entities.User;
@@ -6,7 +6,7 @@ import com.project.appz.enums.Disease;
 
 import java.util.List;
 
-public interface IMedicalRecordService {
+public interface MedicalRecordService {
     void createRecord(MedicalRecord record);
 
     void updateRecord(MedicalRecord record);

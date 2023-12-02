@@ -1,9 +1,9 @@
-package com.project.appz.servises;
+package com.project.appz.service.impl;
 
 import com.project.appz.entities.Poll;
 import com.project.appz.entities.ResponsePoll;
 import com.project.appz.entities.User;
-import com.project.appz.interfaces.IPollManager;
+import com.project.appz.service.PollManager;
 import com.project.appz.utils.Logger;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PollManagerImpl implements IPollManager {
+public class PollManagerImpl implements PollManager {
     Logger logger;
 
     @Override

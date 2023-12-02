@@ -1,11 +1,11 @@
 package com.project.appz.entities;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Data
@@ -19,8 +19,8 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Column(name = "answer_text", nullable = false)
+  
+    @Column(name = "answer_text" )
     private String answerText;
 
     @Column(name = "is_chosen")
