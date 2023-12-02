@@ -1,4 +1,4 @@
-package com.project.appz.service;
+package com.project.appz.security;
 
 import com.project.appz.entities.User;
 import com.project.appz.repository.UserRepository;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserSecurityService implements UserDetailsService {
 
     private UserRepository repository;
 
@@ -27,7 +27,7 @@ public class UserService implements UserDetailsService {
 
 
 
-    public UserService(UserRepository repository) {
+    public UserSecurityService(UserRepository repository) {
         this.repository = repository;
     }
 

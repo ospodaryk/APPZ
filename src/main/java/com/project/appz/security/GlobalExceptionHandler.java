@@ -1,4 +1,4 @@
-package com.project.appz;
+package com.project.appz.security;
 
 import com.project.appz.security.JwtTokenRepository;
 import lombok.Getter;

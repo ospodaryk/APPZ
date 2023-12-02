@@ -1,8 +1,5 @@
-package com.project.appz;
+package com.project.appz.security;
 
-import com.project.appz.security.JwtCsrfFilter;
-import com.project.appz.security.JwtTokenRepository;
-import com.project.appz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +20,7 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserService service;
+    private UserSecurityService service;
 
     @Autowired
     private JwtTokenRepository jwtTokenRepository;

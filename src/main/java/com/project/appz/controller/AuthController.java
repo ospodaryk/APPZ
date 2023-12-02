@@ -3,7 +3,7 @@ package com.project.appz.controller;
 
 import java.util.Objects;
 
-import com.project.appz.service.UserService;
+import com.project.appz.security.UserSecurityService;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,15 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Objects;
-
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
-    private UserService service;
+    private UserSecurityService service;
 
-    public AuthController(UserService service) {
+    public AuthController(UserSecurityService service) {
         this.service = service;
     }
 
