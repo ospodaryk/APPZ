@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+    <title>LOGIN</title>
+    <link href="../static/styles/main.css" rel="stylesheet" th:href="@{/styles/main.css}"/>
+
+</head>
+<body>
+<div th:replace="header"></div>
+
+<hr>
+<h1>Оцінювання навичок програміста за допомогою моделі навичок братів Дрейфус</h1>
+<hr>
+<h4>
+    Модель припускає, що студент проходить крізь п'ять різних етапів навчання: новачок, твердий початківець,
+    компетентний, досвідчений, експерт.</h4>
+<h4> На основі характеристик розроблена семантична модель даних.</h4>
+<h4> Модель призначена для анкетування бажаючих на предмет оцінки їх належності до певного етапу навчання, або типу
+    програміста. </h4>
+<h4>Анкета включає 5-ь блоків питань.</h4>
+<h4> Кожному питанню подані відповіді та можливі оцінки.</h4>
+
+<hr>
+<div th:if="${param.error}"><h1>Неправильний пароль чи логін :(</h1>
+    <hr>
+</div>
+<div th:if="${param.logout}"><h1>Ви вийшли з акаунту</h1>
+    <hr>
+</div>
+<form class="form-horizontal" id="form-login" method="POST" th:action="@{/form-login}">
+    <div class="form-group">
+        <h2 class="col-sm-2 control-label">Логін:</h2>
+        <div class="col-sm-8">
+            <input class="form-control" name="username" type="text"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <h2 class="col-sm-2 control-label">Пароль:</h2>
+        <div class="col-sm-8">
+            <input class="form-control" name="password" type="password"/>
+        </div>
+    </div>
+    <div class="col-sm-offset-2 col-sm-8">
+        <input class="btn btn-info" type="submit" value="Увійти"/>
+    </div>
+</form>
+<br><br>
+<h3 class="form-group" style="align-content: center">Ще не зареєстрований?
+    <a th:href="@{/users/create}"> Реєструйся зараз!</a></h3>
+</body>
+</html>

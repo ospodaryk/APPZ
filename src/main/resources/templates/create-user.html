@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <title>New User registration</title>
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="col-md-offset-2">
+    <h2>Зареєструватися</h2>
+</div>
+<form class="form-horizontal" method="post" th:action="@{/users/create}" th:object="${user}">
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="first-name">Ім'я:</label>
+        <div class="col-sm-8">
+            <input class="form-control" id="first-name" th:field="*{firstName}" type="text"/>
+            <small class="form-text text-muted" th:errors="*{firstName}"
+                   th:if="${#fields.hasErrors('firstName')}"></small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="last-name">Прізвище:</label>
+        <div class="col-sm-8">
+            <input class="form-control" id="last-name" th:field="*{lastName}" type="text"/>
+            <small class="form-text text-muted" th:errors="*{lastName}"
+                   th:if="${#fields.hasErrors('lastName')}"></small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="last-name">Пароль:</label>
+        <div class="col-sm-8">
+            <input class="form-control" id="password" th:field="*{password}" type="password"/>
+            <small class="form-text text-muted" th:errors="*{password}"
+                   th:if="${#fields.hasErrors('password')}"></small>
+        </div>
+    </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="email">E-mail:</label>
+        <div class="col-sm-8">
+            <input class="form-control" id="email" th:field="*{email}" type="email"/>
+            <small class="form-text text-muted" th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></small>
+        </div>
+    </div>
+    <div>
+        <input class="btn btn-info" type="submit" value="Зареєструватися"/>
+        <input class="btn btn" type="reset" value="Очистити"/>
+    </div>
+</form>
+</body>
+</html>

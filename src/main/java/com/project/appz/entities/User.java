@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,10 +48,6 @@ public class User {
     @Pattern(regexp = ".*[a-z].*", message = "Must contain at least one lowercase letter")
     @Column(name = "password", nullable = false)
     private String password;
-
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
 
     public void updateContactInfo(String phoneNumber, String email) {
         // Implementation
