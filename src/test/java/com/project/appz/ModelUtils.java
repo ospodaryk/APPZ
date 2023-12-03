@@ -1,8 +1,6 @@
 package com.project.appz;
 
-import com.project.appz.models.entities.Doctor;
-import com.project.appz.models.entities.MedicalRecord;
-import com.project.appz.models.entities.User;
+import com.project.appz.models.entities.*;
 import com.project.appz.models.enums.Disease;
 import com.project.appz.models.enums.Specialization;
 
@@ -11,6 +9,7 @@ import java.time.LocalDateTime;
 public final class ModelUtils {
     public static final User getUser() {
         return User.builder()
+                .id(1l)
                 .name("Taras")
                 .surname("Shevchenko")
                 .phoneNumber("+380009500066")
@@ -37,6 +36,20 @@ public final class ModelUtils {
                 .patient(getUser())
                 .build();
     }
+
+    public static final ResponsePoll getResponsePoll() {
+        return ResponsePoll.builder()
+                .id(1L)
+                .build();
+    }
+
+    public static final Poll getPoll() {
+        return Poll.builder()
+                .id(1L)
+                .user(getUser())
+                .build();
+    }
+
 
     public static final MedicalRecord getMedicalRecordLastYear_ACNE() {
         return MedicalRecord.builder()
