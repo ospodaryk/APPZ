@@ -1,8 +1,8 @@
 package com.project.appz;
-import com.project.appz.models.enums.Disease;
 
 import com.project.appz.models.entities.MedicalRecord;
 import com.project.appz.models.entities.User;
+import com.project.appz.models.enums.Disease;
 import com.project.appz.repository.MedicalRecordRepository;
 import com.project.appz.service.impl.MedicalRecordServiceImpl;
 import org.junit.jupiter.api.Test;
