@@ -1,7 +1,7 @@
 package com.project.appz;
 
-import com.project.appz.entities.Notification;
-import com.project.appz.servises.NotificationServiceImpl;
+import com.project.appz.models.entities.Notification;
+import com.project.appz.service.impl.NotificationServiceImpl;
 import com.project.appz.utils.Logger;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,7 +31,7 @@ public class NotificationServiceImplTest {
         Notification notification = new Notification();
         notification.setMessage("Valid Message");
         notificationService.sendNotification(notification);
-        Mockito.verify(logger).log("Sending notification: Valid Message");
+        Mockito.verify(logger).log("INFO", "Sending notification: Valid Message");
     }
 
     @Test
@@ -39,7 +39,7 @@ public class NotificationServiceImplTest {
         Notification notification = new Notification();
         Date scheduledTime = new Date();
         notificationService.scheduleNotification(notification, scheduledTime);
-        Mockito.verify(logger).log("Scheduling notification for: " + scheduledTime.toString());
+        Mockito.verify(logger).log("INFO", "Scheduling notification for: " + scheduledTime.toString());
     }
 
     // Negative Tests
