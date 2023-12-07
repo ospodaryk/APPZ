@@ -14,13 +14,27 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public void sendNotification(Notification notification) {
-        // Implementation to send the notification
-//        Logger.getInstance().log("Sending notification: " + notification.getMessage());
+        if (notification == null || notification.getMessage() == null) {
+            throw new IllegalArgumentException("Notification and its message must not be null");
+        }
+
+        // Logic to send the notification
+        // ...
+
+        // Log the action
+        logger.log("INFO", "Sending notification: " + notification.getMessage());
     }
 
     @Override
     public void scheduleNotification(Notification notification, Date scheduledTime) {
-        // Implementation to schedule the notification
-//        Logger.getInstance().log("Scheduling notification for: " + scheduledTime.toString());
+        if (notification == null || scheduledTime == null) {
+            throw new IllegalArgumentException("Notification and scheduled time must not be null");
+        }
+
+        // Logic to schedule the notification
+        // ...
+
+        // Log the action
+        logger.log("INFO", "Scheduling notification for: " + scheduledTime.toString());
     }
 }
