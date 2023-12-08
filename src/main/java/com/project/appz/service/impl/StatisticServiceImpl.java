@@ -1,31 +1,44 @@
 package com.project.appz.service.impl;
 
-import com.project.appz.models.entities.Poll;
-import com.project.appz.models.entities.User;
-import com.project.appz.models.enums.Disease;
-import com.project.appz.service.StatisticService;
-import com.project.appz.utils.Logger;
-import org.springframework.stereotype.Service;
+import com.project.appz.models.DiagramType;
+import com.project.appz.models.Statistic;
+import com.project.appz.repository.StatisticRepository;
 
 import java.util.Date;
 import java.util.List;
 
-@Service
-public class StatisticServiceImpl implements StatisticService {
-    Logger logger;
+public class StatisticServiceImpl {
 
-    @Override
-    public List<Integer> getStatistic(User user, Disease disease) {
-        return null;
+    private final StatisticRepository statisticRepository;
+
+    public StatisticServiceImpl(StatisticRepository statisticRepository) {
+        this.statisticRepository = statisticRepository;
     }
 
-    @Override
-    public List<Integer> getStatistic(User user, Disease disease, Poll poll) {
-        return null;
+    public List<Statistic> filterDataByBlockAndDate(String block, Date startDate, Date endDate) {
+        return statisticRepository.findByBlockAndDateRange(block, startDate, endDate);
     }
 
-    @Override
-    public List<Integer> getStatistic(User user, Disease disease, Poll poll, Date date) {
-        return null;
+    public String generateDiagram(DiagramType diagramType, List<Statistic> data) {
+        switch (diagramType) {
+            case TYPE1:
+                return generateType1Diagram(data);
+            case TYPE2:
+                return generateType2Diagram(data);
+            default:
+                throw new IllegalArgumentException("Invalid diagram type");
+        }
+    }
+
+    private String generateType1Diagram(List<Statistic> data) {
+        // Implement the logic to generate the first type of diagram
+        // Placeholder implementation
+        return "DiagramType1";
+    }
+
+    private String generateType2Diagram(List<Statistic> data) {
+        // Implement the logic to generate the second type of diagram
+        // Placeholder implementation
+        return "DiagramType2";
     }
 }
