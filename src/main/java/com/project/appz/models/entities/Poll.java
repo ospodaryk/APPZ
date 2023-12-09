@@ -19,7 +19,8 @@ public class Poll {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(name = "poll_title")
+    private String pollTitle;
     @ManyToMany
     private List<Question> questions = new ArrayList<>();
 }
