@@ -6,29 +6,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "poll")
-public class Poll {
+@Table(name = "response")
+public class Response {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany
-    private List<Question> questions = new ArrayList<>();
+    @JoinColumn(name = "poll_id")
+    private Long pollId;
 
-    @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Long userId;
 
-    @OneToOne
-    @JoinColumn(name = "notification_id")
-    private Notification notification;
+    @JoinColumn(name = "answer_id")
+    private Long answerId;
+    @JoinColumn(name = "question_id")
+    private Long questionId;
 
 }

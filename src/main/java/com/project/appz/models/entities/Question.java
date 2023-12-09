@@ -29,15 +29,5 @@ public class Question {
 
     @ManyToMany
     private List<Poll> polls = new ArrayList<>();
-    ;
 
-    // New methods
-    public void setAnswers(List<String> answers) {
-        // Implementation
-    }
-
-    public String getQuestionText() {
-        // Implementation
-        return "";
-    }
 }
