@@ -7,17 +7,21 @@ import com.project.appz.models.enums.Disease;
 import java.util.List;
 
 public interface MedicalRecordService {
-    void createRecord(MedicalRecord record);
+    public void createRecord(MedicalRecord record);
 
-    void updateRecord(MedicalRecord record);
+    public void updateRecord(MedicalRecord record);
 
-    List<MedicalRecord> getRecordByPatient(User patient);
+    public List<MedicalRecord> getRecordByPatient(Long userId);
 
-    List<MedicalRecord> getRecordByDiseaseAndPatient(User patient, Disease disease);
+    public List<MedicalRecord> getRecordByDiseaseAndPatient(User patient, Disease disease);
 
     public List<MedicalRecord> sortByDate(User patient, Disease disease);
 
     public List<MedicalRecord> sortByDate(User patient);
 
     public List<MedicalRecord> sortByDisease(User patient);
+
+    public List<MedicalRecord> filterByDisease(Long patient, String disease);
+
+    public MedicalRecord findById(Long id);
 }
