@@ -19,25 +19,21 @@ public class Doctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Column(name = "specialization")
     private String specialization;
-
 
     @Column(name = "name")
     private String name;
 
-
     @Column(name = "surname")
     private String surname;
-
 
     @Column(name = "phone_number")
     private String phoneNumber;
 
-
     @Column(name = "email")
     private String email;
+
     @Pattern(regexp = ".*\\d.*", message = "Must contain at least one digit")
     @Pattern(regexp = ".*[A-Z].*", message = "Must contain at least one uppercase letter")
     @Pattern(regexp = ".*[a-z].*", message = "Must contain at least one lowercase letter")

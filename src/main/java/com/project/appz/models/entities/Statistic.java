@@ -18,7 +18,7 @@ public class Statistic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "poll_id")
     private Poll poll;
 
