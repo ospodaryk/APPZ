@@ -29,7 +29,7 @@ public class NotificationListener implements EventListener {
         // Calculate time difference
         Duration duration = Duration.between(now, scheduleTime);
 
-        if (!duration.isNegative() && duration.toMinutes() < 60) {
+        if (!duration.isNegative() && duration.toMinutes() > 45 && duration.toMinutes() < 60) {
             // Assuming EmailService has a method to send emails
             emailService.sendMessage(notification.destinationEmail, notification.subject, notification.text);
         }

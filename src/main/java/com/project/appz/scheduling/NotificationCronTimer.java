@@ -17,7 +17,7 @@ public class NotificationCronTimer {
         this.notificationManager = notificationManager;
     }
 
-    @Scheduled(cron = "0 * * * * *") // Runs every minute
+    @Scheduled(cron = "0 0/15 * * * ?") // Runs every minute
     public void sendNotifications() {
         LocalDate today = LocalDate.now();
         notificationManager.sendScheduledNotifications(today);
