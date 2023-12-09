@@ -17,7 +17,6 @@ public class Cabinet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id")
     private Long id;
 
     @OneToOne
