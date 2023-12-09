@@ -20,6 +20,9 @@ public class Poll {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
+    private String Name;
+
     @ManyToMany
     private List<Question> questions = new ArrayList<>();
 }
