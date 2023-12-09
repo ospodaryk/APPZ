@@ -39,8 +39,12 @@ public class MedicalRecordServiceImpl implements MedicalRecordService {
 
     @Override
     public List<MedicalRecord> getRecordByPatient(Long userId) {
-        List<MedicalRecord> medicalRecords=recordRepository.findByPatientId(userId);
-        return medicalRecords;
+        return recordRepository.findByPatientId(userId);
+    }
+
+    @Override
+    public MedicalRecord findById(Long id) {
+        return recordRepository.findById(id).orElseThrow(() -> new NullPointerException("Poll not found with ID: "));
     }
 
     @Override
@@ -64,5 +68,13 @@ public class MedicalRecordServiceImpl implements MedicalRecordService {
     @Override
     public List<MedicalRecord> sortByDisease(User patient) {
         return getRecordByPatient(patient.getId()).stream().sorted(Comparator.comparing(MedicalRecord::getDisease)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MedicalRecord> filterByDisease(Long patient, String disease) {
+        return getRecordByPatient(patient)
+                .stream()
+                .filter(obj -> obj.getDisease().equals(disease))
+                .collect(Collectors.toList());
     }
 }

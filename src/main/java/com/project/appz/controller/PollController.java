@@ -8,10 +8,8 @@ import com.project.appz.models.entities.Poll;
 import com.project.appz.service.PollManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.stream.Collectors;
 
 @RestController
@@ -35,6 +33,7 @@ public class PollController {
         pollManager.savePollResults(responseDto);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
     private PollDto map(Poll poll) {
         return PollDto.builder()
                 .pollId(poll.getId())

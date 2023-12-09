@@ -5,16 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PollDto {
-    Long pollId;
-    String pollTitle;
-    List<QuestionDto> questionDtos = new ArrayList<>();
-
+public class LongMedicalRecordDto {
+    Long id;
+    String title;
+    String doctorName;
+    String dateofvisit;
+    private String doctorNotes;
 }

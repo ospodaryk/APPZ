@@ -4,7 +4,6 @@ import com.project.appz.models.dto.ResponseDto;
 import com.project.appz.models.entities.*;
 import com.project.appz.repository.*;
 import com.project.appz.service.PollManager;
-import com.project.appz.utils.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
