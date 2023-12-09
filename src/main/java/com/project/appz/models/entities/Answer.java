@@ -21,7 +21,6 @@ public class Answer {
     @Column(name = "answer_text")
     private String answerText;
 
-
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Question question;
