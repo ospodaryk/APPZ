@@ -21,8 +21,6 @@ public class Answer {
     @Column(name = "answer_text")
     private String answerText;
 
-    @Column(name = "is_correct")
-    private Boolean isCorrect;
 
     @ManyToOne
     @JoinColumn(name = "question_id")

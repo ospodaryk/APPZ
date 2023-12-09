@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -18,15 +19,22 @@ public class Response {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToOne
     @JoinColumn(name = "poll_id")
-    private Long pollId;
+    private Poll poll;
 
+    @OneToOne
     @JoinColumn(name = "user_id")
-    private Long userId;
+    private User user;
 
+    @OneToOne
     @JoinColumn(name = "answer_id")
-    private Long answerId;
-    @JoinColumn(name = "question_id")
-    private Long questionId;
+    private Answer answer;
 
+    @OneToOne
+    @JoinColumn(name = "question_id")
+    private Question question;
+
+    @Column(name = "response_date")
+    private LocalDate responseDate = LocalDate.now();
 }

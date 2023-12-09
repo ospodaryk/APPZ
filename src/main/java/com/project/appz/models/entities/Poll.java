@@ -22,13 +22,4 @@ public class Poll {
 
     @ManyToMany
     private List<Question> questions = new ArrayList<>();
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @OneToOne
-    @JoinColumn(name = "notification_id")
-    private Notification notification;
-
 }

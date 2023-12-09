@@ -43,14 +43,4 @@ public class Doctor {
     @Pattern(regexp = ".*[a-z].*", message = "Must contain at least one lowercase letter")
     @Column(name = "password")
     private String password;
-
-    public void createPoll(Poll poll) {
-        // Implementation
-    }
-
-    public MedicalRecord viewPatientRecord(User patient) {
-        // Implementation
-        return null;
-    }
-
 }
