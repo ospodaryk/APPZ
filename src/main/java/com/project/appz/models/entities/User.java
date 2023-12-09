@@ -35,7 +35,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<MedicalRecord> medicalRecords = new ArrayList<>();
 
     @Pattern(regexp = ".*\\d.*", message = "Must contain at least one digit")

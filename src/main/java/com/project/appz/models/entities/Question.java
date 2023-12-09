@@ -20,7 +20,6 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Column(name = "question_text")
     private String questionText;
 

@@ -15,22 +15,17 @@ import javax.persistence.*;
 @Table(name = "cabinet")
 public class Cabinet {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id")
     private Long id;
-
 
     @OneToOne
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
-
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-
 
     @Column(name = "disease")
     private String disease;
