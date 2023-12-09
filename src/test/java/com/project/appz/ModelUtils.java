@@ -37,8 +37,8 @@ public final class ModelUtils {
                 .build();
     }
 
-    public static final ResponsePoll getResponsePoll() {
-        return ResponsePoll.builder()
+    public static final Statistic getResponsePoll() {
+        return Statistic.builder()
                 .id(1L)
                 .build();
     }
@@ -46,7 +46,7 @@ public final class ModelUtils {
     public static final Poll getPoll() {
         return Poll.builder()
                 .id(1L)
-                .user(getUser())
+                //.user(getUser())
                 .build();
     }
 

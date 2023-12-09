@@ -29,19 +29,4 @@ public class Notification {
     @Column(name = "checked")
     private Boolean checked;
 
-    public void schedule() {
-        // Implementation
-    }
-
-    public void send() {
-        // Implementation
-    }
-
-    public void cancel() {
-        // Implementation
-    }
-
-    public void check() {
-        // Implementation
-    }
 }

@@ -12,8 +12,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "response_poll")
-public class ResponsePoll {
+@Table(name = "statistic")
+public class Statistic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,12 +25,7 @@ public class ResponsePoll {
     @Column(name = "result")
     private Long result;
 
-    public void submitResponse() {
-        // Implementation
-    }
-
-    public Long getResponseDetails() {
-        // Implementation
-        return 0L;
-    }
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

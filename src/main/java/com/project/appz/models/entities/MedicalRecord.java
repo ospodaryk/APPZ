@@ -37,12 +37,4 @@ public class MedicalRecord {
     @Column(name = "disease")
     private String disease;
 
-    public void addNote(String note) {
-        // Implementation
-    }
-
-    public List<String> getDiagnoses() {
-        // Implementation
-        return new ArrayList<>();
-    }
 }

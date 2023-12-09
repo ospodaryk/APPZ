@@ -28,13 +28,14 @@ public class PollManagerImpl implements PollManager {
     }
 
     @Override
-    public List<ResponsePoll> getPollResults(Poll poll) {
+    public List<Statistic> getPollResults(Poll poll) {
         // Implementation to get poll results
         return new ArrayList<>();
     }
 
     public boolean isPollAssignedToUser(Poll poll, Long userId) {
-        User user = poll.getUser();
+        //User user = poll.getUser();
+        User user = null;
         if (user == null) {
             throw new NullPointerException("user not found with ID: " + userId);
         }
@@ -53,19 +54,19 @@ public class PollManagerImpl implements PollManager {
     @Override
 
     public void savePollResults(ResponseDto responsePollDto) {
-        long userID = responsePollDto.getUserId();
-        long pollId = responsePollDto.getPollId();
-        Poll poll = findPollById(pollId, userID);
-        List<Question> questions = poll.getQuestions();
-        for (int i = 0; i < questions.size(); i++) {
-            Response response = Response.builder()
-                    .userId(userID)
-                    .pollId(pollId)
-                    .questionId(questions.get(i).getId())
-                    .answerId(responsePollDto.getQuestionAnswer().get(questions.get(i).getId()))
-                    .build();
-            responseRepository.save(response);
-        }
+//        long userID = responsePollDto.getUserId();
+//        long pollId = responsePollDto.getPollId();
+//        Poll poll = findPollById(pollId, userID);
+//        List<Question> questions = poll.getQuestions();
+//        for (int i = 0; i < questions.size(); i++) {
+//            Response response = Response.builder()
+//                    //.userId(userID)
+//                    .pollId(pollId)
+//                    .questionId(questions.get(i).getId())
+//                    .answerId(responsePollDto.getQuestionAnswer().get(questions.get(i).getId()))
+//                    .build();
+//            responseRepository.save(response);
+//        }
 
     }
 

@@ -27,7 +27,7 @@ public class Question {
     @OneToMany(mappedBy = "question")
     private List<Answer> answers = new ArrayList<>();
 
-    @ManyToMany
-    private List<Poll> polls = new ArrayList<>();
-
+    @OneToOne
+    @JoinColumn(name = "answer_id")
+    private Answer correctAnswer;
 }
