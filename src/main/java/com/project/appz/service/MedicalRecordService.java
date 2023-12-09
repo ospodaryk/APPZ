@@ -11,8 +11,7 @@ public interface MedicalRecordService {
 
     void updateRecord(MedicalRecord record);
 
-    List<MedicalRecord> getRecordByPatient(User patient);
-
+    List<MedicalRecord> getRecordByPatient(Long userId);
     List<MedicalRecord> getRecordByDiseaseAndPatient(User patient, Disease disease);
 
     public List<MedicalRecord> sortByDate(User patient, Disease disease);

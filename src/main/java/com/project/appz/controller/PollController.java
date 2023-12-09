@@ -27,7 +27,7 @@ public class PollController {
     @GetMapping("/{id}")
     public @ResponseBody PollDto getPollForUserById(@PathVariable long id, @RequestParam(name = "userId") long userId) {
         Poll poll = pollManager.findPollById(id, userId);
-        return map(з);
+        return map(poll);
     }
 
     @PostMapping("/response")
