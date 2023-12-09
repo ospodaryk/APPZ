@@ -25,9 +25,9 @@ public class NotificationManagerImpl implements NotificationManager {
     @Override
     public Notification createNotification(PollAssignment pollAssignment) {
         String doctorName = pollAssignment.getDoctor().getName() + " " + pollAssignment.getDoctor().getSurname(); // Adjust based on actual fields
-        String subject = "Test Assignment: " + pollAssignment.getPoll().getName();
+        String subject = "Test Assignment: " + pollAssignment.getPoll().getPollTitle();
         String text = String.format("Doctor %s has prescribed a test '%s' for you. Please complete it by %s.",
-                doctorName, pollAssignment.getPoll().getName(), pollAssignment.getDeadline().toString());
+                doctorName, pollAssignment.getPoll().getPollTitle(), pollAssignment.getDeadline().toString());
 
         Notification notification = new Notification();
         notification.pollAssignmentId = pollAssignment.getId();
@@ -43,7 +43,7 @@ public class NotificationManagerImpl implements NotificationManager {
         String doctorName = pollAssignment.getDoctor().getName() + " " + pollAssignment.getDoctor().getSurname(); // Adjust based on actual fields
         String subject = "Urgent: Test Deadline Approaching";
         String text = String.format("Reminder from Doctor %s: Only one hour left to complete the test '%s'. Deadline is %s.",
-                doctorName, pollAssignment.getPoll().getName(), pollAssignment.getDeadline().toString());
+                doctorName, pollAssignment.getPoll().getPollTitle(), pollAssignment.getDeadline().toString());
 
         Notification notification = new Notification();
         notification.pollAssignmentId = pollAssignment.getId();

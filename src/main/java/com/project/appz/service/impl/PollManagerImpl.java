@@ -6,10 +6,8 @@ import com.project.appz.models.entities.*;
 import com.project.appz.repository.*;
 import com.project.appz.service.notification.Notification;
 import com.project.appz.service.notification.NotificationManager;
-import com.project.appz.repository.*;
 import com.project.appz.service.PollManager;
 import com.project.appz.utils.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,41 +20,29 @@ import java.util.Map;
 @Service
 public class PollManagerImpl implements PollManager {
     Logger logger;
-    PollRepository pollRepository;
-    PollAssignmentRepository pollAssignmentRepository;
-    DoctorRepository doctorRepository;
-    UserRepository userRepository;
-    NotificationManager notificationManager;
-    ResponseRepository responseRepository;
+    private final PollAssignmentRepository pollAssignmentRepository;
+    private final DoctorRepository doctorRepository;
+    private final NotificationManager notificationManager;
     private final PollRepository pollRepository;
     private final ResponseRepository responseRepository;
-    private final AssignedPollRepository assignedPollRepository;
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
     private final UserRepository userRepository;
 
     @Autowired
-
-    public PollManagerImpl(PollRepository pollRepository, ResponseRepository responseRepository, AssignedPollRepository assignedPollRepository, QuestionRepository questionRepository, AnswerRepository answerRepository, UserRepository userRepository) {
+    public PollManagerImpl(PollRepository pollRepository, PollAssignmentRepository pollAssignmentRepository,
+                           DoctorRepository doctorRepository, UserRepository userRepository,
+                           NotificationManager notificationManager, ResponseRepository responseRepository,
+                           QuestionRepository questionRepository, AnswerRepository answerRepository) {
+        this.pollAssignmentRepository = pollAssignmentRepository;
+        this.doctorRepository = doctorRepository;
+        this.notificationManager = notificationManager;
         this.pollRepository = pollRepository;
         this.responseRepository = responseRepository;
-        this.assignedPollRepository = assignedPollRepository;
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
         this.userRepository = userRepository;
-    }
 
-
-    @Autowired
-    public PollManagerImpl(PollRepository pollRepository, PollAssignmentRepository pollAssignmentRepository,
-                           DoctorRepository doctorRepository, UserRepository userRepository,
-                           NotificationManager notificationManager, ResponseRepository responseRepository) {
-        this.pollRepository = pollRepository;
-        this.pollAssignmentRepository = pollAssignmentRepository;
-        this.doctorRepository = doctorRepository;
-        this.userRepository = userRepository;
-        this.notificationManager = notificationManager;
-        this.responseRepository = responseRepository;
     }
 
     @Override
@@ -104,7 +90,7 @@ public class PollManagerImpl implements PollManager {
 
     public boolean isPollAssignedToUser(Poll poll, Long userId) {
         //User user = poll.getUser();
-        AssignedPoll assignedPoll = assignedPollRepository.findByPollId(poll.getId());
+        PollAssignment assignedPoll = pollAssignmentRepository.findByPollId(poll.getId());
         if (assignedPoll == null) {
             throw new NullPointerException("assignedPoll not found with ID: " + poll.getId());
         }
