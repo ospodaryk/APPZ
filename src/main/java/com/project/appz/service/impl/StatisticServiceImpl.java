@@ -57,20 +57,22 @@ public class StatisticServiceImpl implements StatisticService {
     }
 
     @Override
-    public StatisticDto filterByPoll(Long patient, Long pollId) {
-        Statistic statistic = statisticRepository.findByUserIdAndPollId(patient, pollId);
+    public StatisticDto filterByPoll(Long statisticId) {
+        Statistic statistic = statisticRepository.findById(statisticId).orElseThrow();
 
         StatisticDto statisticDto = new StatisticDto();
 
-        statisticDto.getStatisticMap().replace(StatisticVariants.GOOD.getDisplayName(), Double.valueOf(statistic.getResult() * 100));
-        statisticDto.getStatisticMap().replace(StatisticVariants.BAD.getDisplayName(), Double.valueOf(100 - statistic.getResult() * 100));
+        statisticDto.getStatisticMap().replace(StatisticVariants.GOOD.getDisplayName(), Double.valueOf(statistic.getResult() ));
+        statisticDto.getStatisticMap().replace(StatisticVariants.BAD.getDisplayName(), Double.valueOf(100 - statistic.getResult() ));
 
         return statisticDto;
     }
 
     @Override
-    public StatisticDto filterByBlockAndPoll(Long patient, Long pollId, Long blockId) {
-        List<Response> responses = responseRepository.findByUserIdAndPollId(patient, pollId)
+    public StatisticDto filterByBlockAndPoll(Long patient, Long statisticpollId, Long blockId) {
+        Statistic statistics = statisticRepository.findById(statisticpollId).orElseThrow();
+
+        List<Response> responses = responseRepository.findByUserIdAndPollId(patient, statistics.getPoll().getId())
                 .stream()
                 .filter(response -> response.getPoll().getQuestions()
                         .stream()

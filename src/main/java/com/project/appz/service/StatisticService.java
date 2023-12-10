@@ -10,9 +10,9 @@ import java.util.Date;
 import java.util.List;
 
 public interface StatisticService {
+    StatisticDto filterByPoll(Long statisticId);
     public void saveData(ResponseDto responseDto);
 
-    StatisticDto filterByPoll(Long patient, Long pollId);
 
     List<Integer> getStatistic(User user, Disease disease);
 

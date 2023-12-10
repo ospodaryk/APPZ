@@ -1,15 +1,20 @@
 package com.project.appz.service.impl;
 
 import com.project.appz.models.dto.ShortPollDto;
+import com.project.appz.models.entities.Poll;
 import com.project.appz.models.entities.PollAssignment;
 import com.project.appz.models.entities.Response;
+import com.project.appz.models.entities.Statistic;
 import com.project.appz.repository.*;
 import com.project.appz.service.PollAssignmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class PollAssignmentImplAssignment implements PollAssignmentService {
@@ -36,17 +41,20 @@ public class PollAssignmentImplAssignment implements PollAssignmentService {
 
     @Override
     public List<ShortPollDto> findAllByUser(Long userId) {
-        List<PollAssignment> pollAssignments = pollAssignmentRepository.findByUserIdAndAndIsCompleted(userId, true);
+        List<Statistic> responsesByUser = statisticRepository.findByUserId(userId);
         List<ShortPollDto> shortPollDtos = new ArrayList<>();
-        for (int i = 0; i < pollAssignments.size(); i++) {
-            Long pollId = pollAssignments.get(i).getPoll().getId();
-            List<Response> responses = responseRepository.findByUserIdAndPollId(userId, pollId);
-            shortPollDtos.add(ShortPollDto.builder()
-                    .pollDate(responses.get(0).getResponseDate())
-                    .id(pollAssignments.get(i).getPoll().getId())
-                    .pollTitle(pollAssignments.get(i).getPoll().getPollTitle())
-                    .build());
+
+        for (int i = 0; i < responsesByUser.size(); i++) {
+            List<Response> responses = responseRepository.findByUserIdAndPollId(userId, responsesByUser.get(i).getPoll().getId());
+            if (!responses.isEmpty()) {
+                shortPollDtos.add(ShortPollDto.builder()
+                        .pollDate(responses.get(0).getResponseDate())
+                        .id(responsesByUser.get(i).getId())
+                        .pollTitle(responsesByUser.get(i).getPoll().getPollTitle())
+                        .build());
+            }
         }
         return shortPollDtos;
     }
+
 }
