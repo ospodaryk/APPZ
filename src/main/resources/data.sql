@@ -65,18 +65,31 @@ VALUES  (DEFAULT, 'Answer text for question 1'),
         (DEFAULT, 'Answer three for question 5'),
         (DEFAULT, 'Answer four for question 5');
 
-INSERT INTO public.question (id, question_text, answer_id)
+INSERT INTO public.question_block (id, block_name)
 VALUES
-    (DEFAULT, 'What is the best way to maintain a healthy diet?', 1),
-    (DEFAULT, 'How often should one exercise per week?', 3),
-    (DEFAULT, 'What are common symptoms of seasonal allergies?', 6),
-    (DEFAULT, 'Can you describe effective stress management techniques?', 2),
-    (DEFAULT, 'What are the benefits of regular medical checkups?', 5),
-    (DEFAULT, 'How does sleep affect overall health?', 9),
-    (DEFAULT, 'What steps can be taken to prevent common colds?', 4),
-    (DEFAULT, 'What is the importance of hydration for health?', 7),
-    (DEFAULT, 'Can you explain the role of vitamins in the body?', 8),
-    (DEFAULT, 'What are healthy habits to improve heart health?', 10);
+(DEFAULT,'Questions about Body Health'),
+(DEFAULT,'General Health and Wellness Questions'),
+(DEFAULT,'Questions about Diet and Nutrition'),
+(DEFAULT,'Mental Health and Stress Management Questions'),
+(DEFAULT,'Chronic Conditions and Disease Management'),
+(DEFAULT,'Medication and Treatment Questions'),
+(DEFAULT,'Family Health History Questions'),
+(DEFAULT,'Lifestyle and Exercise Questions'),
+(DEFAULT,'Symptom Assessment and Reporting'),
+(DEFAULT,'Preventive Health and Checkups');
+
+INSERT INTO public.question (id, question_text, answer_id, block_id)
+VALUES
+    (DEFAULT, 'What is the best way to maintain a healthy diet?', 1, 1),
+    (DEFAULT, 'How often should one exercise per week?', 3, 2),
+    (DEFAULT, 'What are common symptoms of seasonal allergies?', 6, 2),
+    (DEFAULT, 'Can you describe effective stress management techniques?', 2, 3),
+    (DEFAULT, 'What are the benefits of regular medical checkups?', 5, 4),
+    (DEFAULT, 'How does sleep affect overall health?', 9, 5),
+    (DEFAULT, 'What steps can be taken to prevent common colds?', 4, 6),
+    (DEFAULT, 'What is the importance of hydration for health?', 7, 7),
+    (DEFAULT, 'Can you explain the role of vitamins in the body?', 8, 8),
+    (DEFAULT, 'What are healthy habits to improve heart health?', 10, 9);
 
 INSERT INTO public.cabinet (id, doctor_id, user_id, disease)
 values  (DEFAULT, 1, 1, 'Hypertension'),
@@ -156,5 +169,15 @@ values
 (DEFAULT, 9, 9, 9, '2023-12-23', '2023-12-09', true),
 (DEFAULT, 10, 10, 10, '2023-12-22', '2023-12-10', false);
 
-
-
+INSERT INTO public.poll_questions (poll_id, question_id)
+VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(2, 5),
+(2, 6),
+(2, 1),
+(2, 2),
+(2, 8),
+(2, 10);

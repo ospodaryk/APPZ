@@ -29,4 +29,8 @@ public class Question {
     @OneToOne
     @JoinColumn(name = "answer_id")
     private Answer correctAnswer;
+
+    @OneToOne
+    @JoinColumn(name = "block_id")
+    private Answer blockId;
 }
