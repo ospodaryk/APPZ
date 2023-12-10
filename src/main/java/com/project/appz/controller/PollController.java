@@ -6,6 +6,8 @@ import com.project.appz.models.dto.QuestionDto;
 import com.project.appz.models.dto.ResponseDto;
 import com.project.appz.models.entities.Poll;
 import com.project.appz.service.PollManager;
+import com.project.appz.service.StatisticService;
+import com.project.appz.service.impl.StatisticServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +19,11 @@ import java.util.stream.Collectors;
 public class PollController {
 
     private PollManager pollManager;
+    private StatisticService statisticService;
 
-    public PollController(PollManager pollManager) {
+    public PollController(PollManager pollManager, StatisticService statisticService) {
         this.pollManager = pollManager;
+        this.statisticService = statisticService;
     }
 
     @GetMapping("/{id}")
@@ -31,6 +35,7 @@ public class PollController {
     @PostMapping("/response")
     public ResponseEntity<Void> submitResponse(@RequestBody ResponseDto responseDto) {
         pollManager.savePollResults(responseDto);
+        statisticService.saveData(responseDto);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
