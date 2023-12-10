@@ -1,6 +1,6 @@
 INSERT INTO public.users (id, email, name, password, phone_number, surname)
-VALUES (DEFAULT, 'oksanaspodaryk@mail.com', 'Oksana', '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6',
-        '380501234567', 'Spodaryk'),
+VALUES (DEFAULT, 'volodymyrkolomiy@mail.com', 'Volodymyr', '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6',
+        '380501234567', 'Kolomiy'),
        (DEFAULT, 'dariiamartyniuk@inbox.com', 'Dariia', '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6',
         '380501234568', 'Martyniuk'),
        (DEFAULT, 'artemhuk@mail.com', 'Artem', '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6',
@@ -76,7 +76,7 @@ VALUES  (1, 'Так'),
         (30, 'Так'),
         (31, 'Ні'),
         (32, 'Високий'),
-        (33, 'Середній')
+        (33, 'Середній'),
         (34, 'Низький'),
         (35, 'Відсутній'),
         (36, 'Так'),
@@ -97,12 +97,12 @@ VALUES
     (2, 'Чи відчуваєте ви нудоту?', 13, 1),
     (3, 'Чи часто у вас паморочиться голова?', 15, 1),
     (4, 'Ви здавали аналіз крові протягом останніх трьох днів?', 17, 2),
-    (5, 'Чи часто ви відчувєте втому?', 19, 1),
+    (5, 'Чи часто ви відчуваєте втому?', 19, 1),
     (6, 'Скільки разів на тиждень маєте активностей?', 3, 3),
     (7, 'Які з наведених симптомів відчуваєте найбільше?', 8, 4),
     (8, 'Чи відчуваєте ви тривожність?', 21, 1),
     (9, 'Чи маєте ви шкідливі звички?', 23, 3),
-    (10, 'Чи хторів хтось в сімї на рак?', 24, 5),
+    (10, 'Чи хворів хтось в сімї на рак?', 24, 5),
     (11, 'Чи маєте хронічні захворювання?', 27, 6),
     (12, 'Чи збалансоване у Вас харчування (80% поживної їжі, 20% шкідливої)?', 28, 3),
     (13, 'Чи робили ви УЗД щитовидної залози впродовж останніх 6 місяців?', 30, 2),
@@ -185,7 +185,7 @@ UPDATE public.answer SET question_id  = 15 WHERE id = 37;
 
 INSERT INTO public.cabinet (id, disease, doctor_id, user_id)
 values  (DEFAULT, 'Астма', 1, 1),
-        (DEFAULT, 'Мігрень', 2, 2),
+        (DEFAULT, 'Мігрень', 2, 1),
         (DEFAULT, 'Діабет', 3, 3),
         (DEFAULT, 'Застуда', 4, 4),
         (DEFAULT, 'COVID-19', 5, 5),
@@ -198,7 +198,7 @@ values  (DEFAULT, 'Астма', 1, 1),
 INSERT INTO public.medical_record (id, patient_id, doctor_id, created_time, doctor_notes, disease)
 VALUES
     (DEFAULT, 1, 1, '2023-01-01T08:00:00', 'Patient in good health, no immediate concerns.', 'Астма'),
-    (DEFAULT, 2, 2, '2023-01-02T09:00:00', 'Patient reports mild eczema, prescribed topical cream.', 'Мігрень'),
+    (DEFAULT, 1, 2, '2023-01-02T09:00:00', 'Patient reports mild eczema, prescribed topical cream.', 'Мігрень'),
     (DEFAULT, 3, 3, '2023-01-03T10:30:00', 'Regular migraine, advised lifestyle changes and medication.', 'Діабет'),
     (DEFAULT, 4, 4, '2023-01-04T11:15:00', 'Asthma check-up, no change in medication needed.', 'Застуда'),
     (DEFAULT, 5, 5, '2023-01-05T14:00:00', 'Routine cancer follow-up, stable condition.', 'COVID-19'),
@@ -225,13 +225,13 @@ values
     (DEFAULT,'2023-12-01',22,1, 9,1),
     (DEFAULT,'2023-12-01',24,1, 10,1),
 
-    (DEFAULT,'2023-12-02',1,2, 11,2),
-    (DEFAULT,'2023-12-02',1,2, 1,2),
-    (DEFAULT,'2023-12-02',1,2, 2,2),
-    (DEFAULT,'2023-12-02',2,2, 3,2),
-    (DEFAULT,'2023-12-02',1,2, 5,2),
-    (DEFAULT,'2023-12-02',7,2, 7,2),
-    (DEFAULT,'2023-12-02',2,2, 8,2),
+    (DEFAULT,'2023-12-02',1,2, 11,1),
+    (DEFAULT,'2023-12-02',1,2, 1,1),
+    (DEFAULT,'2023-12-02',1,2, 2,1),
+    (DEFAULT,'2023-12-02',2,2, 3,1),
+    (DEFAULT,'2023-12-02',1,2, 5,1),
+    (DEFAULT,'2023-12-02',7,2, 7,1),
+    (DEFAULT,'2023-12-02',2,2, 8,1),
 
     (DEFAULT,'2023-12-03',16,3, 4,3),
     (DEFAULT,'2023-12-03',23,3, 9,3),
@@ -246,7 +246,7 @@ values
 INSERT INTO public.statistic (id, poll_id, result, user_id)
 VALUES
     (DEFAULT,1, 55, 1),
-    (DEFAULT,2, 85, 2),
+    (DEFAULT,2, 40, 1),
     (DEFAULT,3, 90, 3),
     (DEFAULT,4, 75, 4),
     (DEFAULT,5, 95, 5),
@@ -255,7 +255,7 @@ VALUES
 INSERT INTO public.poll_assignment (id, doctor_id, user_id, poll_id, deadline, created_date, is_completed)
 values
 (DEFAULT, 1, 1, 1, '2023-12-31', '2023-12-01', false),
-(DEFAULT, 2, 2, 2, '2023-12-30', '2023-12-02', false),
+(DEFAULT, 2, 2, 1, '2023-12-30', '2023-12-02', false),
 (DEFAULT, 3, 3, 3, '2023-12-29', '2023-12-03', true),
 (DEFAULT, 4, 4, 4, '2023-12-28', '2023-12-04', false),
 (DEFAULT, 5, 5, 5, '2023-12-27', '2023-12-05', true),
