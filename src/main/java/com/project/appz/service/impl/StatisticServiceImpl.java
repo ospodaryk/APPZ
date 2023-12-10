@@ -1,6 +1,7 @@
 package com.project.appz.service.impl;
 
 import com.project.appz.models.dto.ResponseDto;
+import com.project.appz.models.dto.ResponseQuestionPollDto;
 import com.project.appz.models.dto.StatisticDto;
 import com.project.appz.models.entities.*;
 import com.project.appz.models.enums.Disease;
@@ -14,6 +15,7 @@ import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -49,7 +51,13 @@ public class StatisticServiceImpl implements StatisticService {
         statistic.setUser(user);
         statistic.setPoll(poll);
         int result = 0;
-        Map<Long, Long> questions = responseDto.getQuestionAnswer();
+        List<ResponseQuestionPollDto> answerDtoList=responseDto.getAnswers();
+
+        Map<Long, Long> questions = new HashMap<>();
+        for (int i = 0; i < answerDtoList.size(); i++) {
+            ResponseQuestionPollDto responseQuestionPollDto=answerDtoList.get(i);
+            questions.put(responseQuestionPollDto.getQuestionId(),responseQuestionPollDto.getAnswerId());
+        }
         for (Long key : questions.keySet()) {
             Question question = questionRepository.findById(key).orElseThrow(() -> new NullPointerException("Poll not found with ID: "));
             Answer answerUser = answerRepository.findById(questions.get(key)).orElseThrow(() -> new NullPointerException("Poll not found with ID: "));
