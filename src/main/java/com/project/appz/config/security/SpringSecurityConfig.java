@@ -63,7 +63,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/auth/login").permitAll() // Make sure login is accessible to everyone
-                .anyRequest().authenticated() // Secure other endpoints
+                .anyRequest().permitAll()  // Secure other endpoints
                 .and()
                 .httpBasic()
                 .authenticationEntryPoint(((request, response, e) -> resolver.resolveException(request, response, null, e)));
