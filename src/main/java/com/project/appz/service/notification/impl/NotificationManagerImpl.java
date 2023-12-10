@@ -4,8 +4,6 @@ import com.project.appz.models.entities.PollAssignment;
 import com.project.appz.service.notification.EmailService;
 import com.project.appz.service.notification.Notification;
 import com.project.appz.service.notification.NotificationManager;
-import com.project.appz.service.notification.impl.EventManager;
-import com.project.appz.service.notification.impl.NotificationListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

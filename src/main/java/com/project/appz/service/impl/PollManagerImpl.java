@@ -4,22 +4,21 @@ import com.project.appz.models.dto.PollAssignmentDto;
 import com.project.appz.models.dto.ResponseDto;
 import com.project.appz.models.entities.*;
 import com.project.appz.repository.*;
+import com.project.appz.service.PollManager;
 import com.project.appz.service.notification.Notification;
 import com.project.appz.service.notification.NotificationManager;
-import com.project.appz.service.PollManager;
 import com.project.appz.utils.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @Service
 public class PollManagerImpl implements PollManager {
-    Logger logger;
     private final PollAssignmentRepository pollAssignmentRepository;
     private final DoctorRepository doctorRepository;
     private final NotificationManager notificationManager;
@@ -28,6 +27,7 @@ public class PollManagerImpl implements PollManager {
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
     private final UserRepository userRepository;
+    Logger logger;
 
     @Autowired
     public PollManagerImpl(PollRepository pollRepository, PollAssignmentRepository pollAssignmentRepository,
@@ -79,7 +79,6 @@ public class PollManagerImpl implements PollManager {
         // Optionally, log the assignment
         //logger.log("Assigned poll id " + poll.getId() + " to user id " + user.getId());
     }
-
 
 
     @Override

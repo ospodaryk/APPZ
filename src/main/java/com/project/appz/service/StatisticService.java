@@ -12,6 +12,8 @@ import java.util.List;
 public interface StatisticService {
     public void saveData(ResponseDto responseDto);
 
+    StatisticDto filterByPoll(Long patient, Long pollId);
+
     List<Integer> getStatistic(User user, Disease disease);
 
     List<Integer> getStatistic(User user, Disease disease, Poll poll);
@@ -19,6 +21,8 @@ public interface StatisticService {
     List<Integer> getStatistic(User user, Disease disease, Poll poll, Date date);
 
     StatisticDto filterByBlock(Long patient, Long blockId);
+
+    public StatisticDto filterByBlockAndPoll(Long patient, Long pollId, Long blockId);
 
     public List<StatisticDto> filterByDisease(Long patient, String disease);
 }

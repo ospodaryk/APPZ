@@ -1,6 +1,5 @@
 package com.project.appz.models.dto;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class PollAssignmentDto {

@@ -1,16 +1,14 @@
 package com.project.appz.controller;
 
-import com.project.appz.models.dto.LongMedicalRecordDto;
-import com.project.appz.models.dto.ShortMedicalRecordDto;
+import com.project.appz.models.dto.BigStatisticDto;
+import com.project.appz.models.dto.ShortPollDto;
 import com.project.appz.models.dto.StatisticDto;
-import com.project.appz.models.entities.MedicalRecord;
-import com.project.appz.models.entities.Statistic;
-import com.project.appz.service.MedicalRecordService;
+import com.project.appz.service.PollAssignmentService;
+import com.project.appz.service.QuestionService;
 import com.project.appz.service.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,15 +16,43 @@ import java.util.List;
 public class StatisticController {
 
     private StatisticService statisticService;
+    private PollAssignmentService pollAssignmentService;
+    private QuestionService questionService;
 
     @Autowired
-    public StatisticController(StatisticService statisticService) {
+
+    public StatisticController(StatisticService statisticService, PollAssignmentService pollAssignmentService, QuestionService questionService) {
         this.statisticService = statisticService;
+        this.pollAssignmentService = pollAssignmentService;
+        this.questionService = questionService;
     }
 
     @GetMapping("/{blockId}")
     @ResponseBody
     public StatisticDto filterMedicalRecordForUserbyDisease(@PathVariable Long blockId, @RequestParam(name = "userId") long userId) {
         return statisticService.filterByBlock(userId, blockId);
+    }
+
+    @GetMapping("/polls")
+    @ResponseBody
+    public List<ShortPollDto> gettCompletedPolls(@RequestParam(name = "userId") long userId) {
+        return pollAssignmentService.findAllByUser(userId);
+    }
+
+    @GetMapping
+    @ResponseBody
+    public BigStatisticDto getDataByPoll(
+            @RequestParam(name = "pollId") Long pollId,
+            @RequestParam(name = "filterId", required = false) Long filterId,
+            @RequestParam(name = "userId") Long userId) {
+        BigStatisticDto bigStatisticDto = new BigStatisticDto();
+        if (filterId != null) {
+            bigStatisticDto.setStatisticDto(statisticService.filterByPoll(userId, pollId));
+        } else {
+            bigStatisticDto.setStatisticDto(statisticService.filterByBlockAndPoll(userId, filterId, pollId));
+        }
+        bigStatisticDto.setFilterId(filterId);
+        bigStatisticDto.setQuestionBlockSet(questionService.getQuestionBlockByPoll(userId, pollId));
+        return bigStatisticDto;
     }
 }
