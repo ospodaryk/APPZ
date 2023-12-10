@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -15,6 +16,6 @@ import java.util.Set;
 public class BigStatisticDto {
     Long filterId;
     String titleOfPoll;
-    StatisticDto statisticDto;
+    StatisticDto statistic;
     Set<QuestionBlock> questionBlockSet;
 }

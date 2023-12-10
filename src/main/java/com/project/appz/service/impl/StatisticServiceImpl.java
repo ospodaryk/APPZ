@@ -86,10 +86,8 @@ public class StatisticServiceImpl implements StatisticService {
         Statistic statistic = statisticRepository.findById(statisticId).orElseThrow();
 
         StatisticDto statisticDto = new StatisticDto();
-
-        statisticDto.getStatisticMap().replace(StatisticVariants.GOOD.getDisplayName(), Double.valueOf(statistic.getResult()));
-        statisticDto.getStatisticMap().replace(StatisticVariants.BAD.getDisplayName(), Double.valueOf(100 - statistic.getResult()));
-
+        statisticDto.setPositive(Double.valueOf(statistic.getResult()));
+        statisticDto.setNegative(Double.valueOf(100 - statistic.getResult()));
         return statisticDto;
     }
 
@@ -113,9 +111,8 @@ public class StatisticServiceImpl implements StatisticService {
         Double statistic = Double.valueOf((result / responses.size()) * 100);
         StatisticDto statisticDto = new StatisticDto();
 
-        statisticDto.getStatisticMap().replace(StatisticVariants.GOOD.getDisplayName(), statistic);
-        statisticDto.getStatisticMap().replace(StatisticVariants.BAD.getDisplayName(), 100 - statistic);
-
+        statisticDto.setPositive(Double.valueOf(statistic));
+        statisticDto.setNegative(Double.valueOf(100 - statistic));
         return statisticDto;
     }
 
@@ -137,8 +134,8 @@ public class StatisticServiceImpl implements StatisticService {
         Double statistic = Double.valueOf((result / responses.size()) * 100);
         StatisticDto statisticDto = new StatisticDto();
 
-        statisticDto.getStatisticMap().replace(StatisticVariants.GOOD.getDisplayName(), statistic);
-        statisticDto.getStatisticMap().replace(StatisticVariants.BAD.getDisplayName(), 100 - statistic);
+        statisticDto.setPositive(Double.valueOf(statistic));
+        statisticDto.setNegative(Double.valueOf(100 - statistic));
 
         return statisticDto;
     }
