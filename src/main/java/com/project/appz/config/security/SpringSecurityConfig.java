@@ -59,10 +59,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf()
                 .ignoringAntMatchers("/auth/login") // Specify CSRF ignoring for specific endpoints
-                // .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) // Uncomment for CSRF token use
+                .ignoringAntMatchers("/poll/response") // Specify CSRF ignoring for specific endpoints
+                .ignoringAntMatchers("/log") // Specify CSRF ignoring for specific endpoints
                 .and()
                 .authorizeRequests()
                 .antMatchers("/auth/login").permitAll() // Make sure login is accessible to everyone
+                .antMatchers("/poll/response").permitAll()
+                .antMatchers("/log").permitAll() // Make sure login is accessible to everyone
                 .antMatchers(HttpMethod.POST).permitAll() // Allow POST requests to all endpoints
                 .anyRequest().permitAll()  // Secure other endpoints
                 .and()
