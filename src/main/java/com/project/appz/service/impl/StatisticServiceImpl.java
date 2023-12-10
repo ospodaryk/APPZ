@@ -10,6 +10,7 @@ import com.project.appz.service.PollAssignmentService;
 import com.project.appz.service.StatisticService;
 import com.project.appz.utils.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -58,8 +59,18 @@ public class StatisticServiceImpl implements StatisticService {
         }
         statistic.setResult(Long.valueOf(result / questions.size()));
         statisticRepository.save(statistic);
-//        pollAssignmentService.save(responseDto);
+        int maxRetries = 3;
+        int retryCount = 0;
 
+        while (retryCount < maxRetries) {
+            try {
+                // Perform the operation that may cause optimistic locking
+                pollAssignmentService.save(responseDto);
+                break; // Break out of the loop if successful
+            } catch (ObjectOptimisticLockingFailureException ex) {
+                retryCount++;
+                // Log or handle the exception if needed
+            }}
     }
 
     @Override
