@@ -65,7 +65,7 @@ VALUES
 (5,'Запитання про хвороби в сімї'),
 (6,'Запитання про хронічні захворювання');
 
-INSERT INTO public.question (id, question_text, answer_id, block_id)
+INSERT INTO public.question (id, question_text, answer_id, question_block)
 VALUES
     (1, 'Чи часто у Вас болить голова?', 2, 1),
     (2, 'Чи відчуваєте ви нудоту?', 2, 1),
