@@ -31,6 +31,6 @@ public class Question {
     private Answer correctAnswer;
 
     @OneToOne
-    @JoinColumn(name = "block_name")
-    private Answer blockName;
+    @JoinColumn(name = "block_id")
+    private Answer blockId;
 }
