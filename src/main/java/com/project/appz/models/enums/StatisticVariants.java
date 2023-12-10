@@ -1,8 +1,8 @@
 package com.project.appz.models.enums;
 
 public enum StatisticVariants {
-    GOOD("Хороші показники"),
-    BAD("Погані показники");
+    GOOD("Позитивні (добрі) показники"),
+    BAD("Негативні (погані) показники");
 
     private final String displayName;
 

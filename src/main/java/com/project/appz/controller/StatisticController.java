@@ -2,8 +2,11 @@ package com.project.appz.controller;
 
 import com.project.appz.models.dto.LongMedicalRecordDto;
 import com.project.appz.models.dto.ShortMedicalRecordDto;
+import com.project.appz.models.dto.StatisticDto;
 import com.project.appz.models.entities.MedicalRecord;
+import com.project.appz.models.entities.Statistic;
 import com.project.appz.service.MedicalRecordService;
+import com.project.appz.service.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,55 +17,16 @@ import java.util.List;
 @RequestMapping("/statistic")
 public class StatisticController {
 
-    private MedicalRecordService medicalRecordService;
+    private StatisticService statisticService;
 
     @Autowired
-    public StatisticController(MedicalRecordService medicalRecordService) {
-        this.medicalRecordService = medicalRecordService;
+    public StatisticController(StatisticService statisticService) {
+        this.statisticService = statisticService;
     }
 
-    @GetMapping
+    @GetMapping("/{blockId}")
     @ResponseBody
-    public List<ShortMedicalRecordDto> getAllMedicalRecordForUserById(@RequestParam(name = "userId") long userId) {
-        List<MedicalRecord> medicalRecords = medicalRecordService.getRecordByPatient(userId);
-        List<ShortMedicalRecordDto> shortMedicalRecordDtos = new ArrayList<>();
-        for (int i = 0; i < medicalRecords.size(); i++) {
-            shortMedicalRecordDtos.add(ShortMedicalRecordDto
-                    .builder()
-                    .id(medicalRecords.get(i).getId())
-                    .dateofvisit(medicalRecords.get(i).getCreatedTime().toString())
-                    .doctorName(medicalRecords.get(i).getDoctor().getName() + " " + medicalRecords.get(i).getDoctor().getSurname())
-                    .title(medicalRecords.get(i).getDisease()).build());
-        }
-        return shortMedicalRecordDtos;
-    }
-
-    @GetMapping("/{disease}")
-    @ResponseBody
-    public List<ShortMedicalRecordDto> filterMedicalRecordForUserbyDisease(@PathVariable String disease, @RequestParam(name = "userId") long userId) {
-        List<MedicalRecord> medicalRecords = medicalRecordService.filterByDisease(userId, disease);
-        List<ShortMedicalRecordDto> shortMedicalRecordDtos = new ArrayList<>();
-        for (int i = 0; i < medicalRecords.size(); i++) {
-            shortMedicalRecordDtos.add(ShortMedicalRecordDto
-                    .builder()
-                    .id(medicalRecords.get(i).getId())
-                    .dateofvisit(medicalRecords.get(i).getCreatedTime().toString())
-                    .doctorName(medicalRecords.get(i).getDoctor().getName() + " " + medicalRecords.get(i).getDoctor().getSurname())
-                    .title(medicalRecords.get(i).getDisease()).build());
-        }
-        return shortMedicalRecordDtos;
-    }
-
-    @GetMapping("/details/{id}")
-    @ResponseBody
-    public LongMedicalRecordDto getMedicalRecordForUserById(@PathVariable long id, @RequestParam(name = "userId") long userId) {
-        MedicalRecord medicalRecord = medicalRecordService.findById(id);
-        return LongMedicalRecordDto
-                .builder()
-                .id(medicalRecord.getId())
-                .dateofvisit(medicalRecord.getCreatedTime().toString())
-                .doctorName(medicalRecord.getDoctor().getName() + " " + medicalRecord.getDoctor().getSurname())
-                .doctorNotes(medicalRecord.getDoctorNotes())
-                .title(medicalRecord.getDisease()).build();
+    public StatisticDto filterMedicalRecordForUserbyDisease(@PathVariable Long blockId, @RequestParam(name = "userId") long userId) {
+        return statisticService.filterByBlock(userId, blockId);
     }
 }

@@ -11,11 +11,14 @@ import java.util.List;
 
 public interface StatisticService {
     public void saveData(ResponseDto responseDto);
-        List<Integer> getStatistic(User user, Disease disease);
+
+    List<Integer> getStatistic(User user, Disease disease);
 
     List<Integer> getStatistic(User user, Disease disease, Poll poll);
 
     List<Integer> getStatistic(User user, Disease disease, Poll poll, Date date);
-    public List<StatisticDto> filterByBlock(Long patient, String disease);
+
+    StatisticDto filterByBlock(Long patient, Long blockId);
+
     public List<StatisticDto> filterByDisease(Long patient, String disease);
 }

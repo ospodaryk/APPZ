@@ -78,7 +78,7 @@ VALUES
 (DEFAULT,'Symptom Assessment and Reporting'),
 (DEFAULT,'Preventive Health and Checkups');
 
-INSERT INTO public.question (id, question_text, answer_id, block_id)
+INSERT INTO public.question (id, question_text, answer_id, question_block)
 VALUES
     (DEFAULT, 'What is the best way to maintain a healthy diet?', 1, 1),
     (DEFAULT, 'How often should one exercise per week?', 3, 2),
@@ -91,8 +91,9 @@ VALUES
     (DEFAULT, 'Can you explain the role of vitamins in the body?', 8, 8),
     (DEFAULT, 'What are healthy habits to improve heart health?', 10, 9);
 
-INSERT INTO public.cabinet (id, doctor_id, user_id, disease)
-values  (DEFAULT, 1, 1, 'Hypertension'),
+INSERT INTO public.cabinet(
+    id, disease, doctor_id, user_id)
+VALUES (1, 'Hypertension',1, 1),
         (DEFAULT, 2, 2, 'Eczema'),
         (DEFAULT, 3, 3, 'Migraine'),
         (DEFAULT, 4, 4, 'Asthma'),
@@ -156,9 +157,9 @@ VALUES
     (DEFAULT,9, 65, 8),
     (DEFAULT,10, 55, 10);
 
-INSERT INTO public.assigned_poll (id, doctor_id, user_id, poll_id, deadline, created_date, is_completed)
-values
-(DEFAULT, 1, 1, 1, '2023-12-31', '2023-12-01', false),
+INSERT INTO public.assigned_poll(
+    id, created_date, deadline, is_completed, doctor_id, poll_id, user_id)
+VALUES (1, '2023-12-31' , '2023-12-01', false, 1, 1,1),
 (DEFAULT, 2, 2, 2, '2023-12-30', '2023-12-02', false),
 (DEFAULT, 3, 3, 3, '2023-12-29', '2023-12-03', true),
 (DEFAULT, 4, 4, 4, '2023-12-28', '2023-12-04', false),
@@ -169,15 +170,16 @@ values
 (DEFAULT, 9, 9, 9, '2023-12-23', '2023-12-09', true),
 (DEFAULT, 10, 10, 10, '2023-12-22', '2023-12-10', false);
 
-INSERT INTO public.poll_questions (poll_id, question_id)
+INSERT INTO public.poll_questions(
+    poll_id, questions_id)
 VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(2, 5),
-(2, 6),
-(2, 1),
-(2, 2),
-(2, 8),
-(2, 10);
+    (1, 1),
+    (1, 2),
+    (1, 3),
+    (1, 4),
+    (2, 5),
+    (2, 6),
+    (2, 1),
+    (2, 2),
+    (2, 8),
+    (2, 10);

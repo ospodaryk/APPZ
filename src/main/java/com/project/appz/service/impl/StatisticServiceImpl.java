@@ -56,28 +56,33 @@ public class StatisticServiceImpl implements StatisticService {
                 result++;
             }
         }
-        statistic.setResult(Long.valueOf(result/questions.size()));
+        statistic.setResult(Long.valueOf(result / questions.size()));
         statisticRepository.save(statistic);
     }
 
-    @Override
-    public List<Integer> getStatistic(User user, Disease disease) {
-        return null;
-    }
 
     @Override
-    public List<Integer> getStatistic(User user, Disease disease, Poll poll) {
-        return null;
-    }
+    public StatisticDto filterByBlock(Long patient, Long blockId) {
+        List<Response> responses = responseRepository.findByUserId(patient)
+                .stream()
+                .filter(response -> response.getPoll().getQuestions()
+                        .stream()
+                        .anyMatch(question -> blockId.equals(question.getQuestionBlock().getId())))
+                .collect(Collectors.toList());
+        int result = 0;
+        for (int i = 0; i < responses.size(); i++) {
+            Response response = responses.get(i);
+            if (response.getAnswer().equals(response.getQuestion().getCorrectAnswer())) {
+                result++;
+            }
+        }
+        Double statistic = Double.valueOf((result / responses.size()) * 100);
+        StatisticDto statisticDto = new StatisticDto();
 
-    @Override
-    public List<Integer> getStatistic(User user, Disease disease, Poll poll, Date date) {
-        return null;
-    }
+        statisticDto.getStatisticMap().replace(StatisticVariants.GOOD.getDisplayName(), statistic);
+        statisticDto.getStatisticMap().replace(StatisticVariants.BAD.getDisplayName(), 100 - statistic);
 
-    @Override
-    public List<StatisticDto> filterByBlock(Long patient, String disease) {
-        return null;
+        return statisticDto;
     }
 
     @Override
@@ -85,7 +90,7 @@ public class StatisticServiceImpl implements StatisticService {
         return null;
     }
 
-//    @Override
+    //    @Override
 //    public List<Statistic> filterByBlock(Long patient, String disease) {
 //        return null;
 //    }
@@ -118,4 +123,19 @@ public class StatisticServiceImpl implements StatisticService {
 //        }
 //        return
 //    }
+    @Override
+    public List<Integer> getStatistic(User user, Disease disease) {
+        return null;
+    }
+
+    @Override
+    public List<Integer> getStatistic(User user, Disease disease, Poll poll) {
+        return null;
+    }
+
+    @Override
+    public List<Integer> getStatistic(User user, Disease disease, Poll poll, Date date) {
+        return null;
+    }
+
 }
