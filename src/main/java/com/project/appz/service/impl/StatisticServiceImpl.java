@@ -6,6 +6,7 @@ import com.project.appz.models.entities.*;
 import com.project.appz.models.enums.Disease;
 import com.project.appz.models.enums.StatisticVariants;
 import com.project.appz.repository.*;
+import com.project.appz.service.PollAssignmentService;
 import com.project.appz.service.StatisticService;
 import com.project.appz.utils.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +25,19 @@ public class StatisticServiceImpl implements StatisticService {
     private final AnswerRepository answerRepository;
     private final UserRepository userRepository;
     private final StatisticRepository statisticRepository;
+    private final PollAssignmentService pollAssignmentService;
+
     Logger logger;
 
     @Autowired
-    public StatisticServiceImpl(PollRepository pollRepository, ResponseRepository responseRepository, QuestionRepository questionRepository, AnswerRepository answerRepository, UserRepository userRepository, StatisticRepository statisticRepository) {
+    public StatisticServiceImpl(PollRepository pollRepository, ResponseRepository responseRepository, QuestionRepository questionRepository, AnswerRepository answerRepository, UserRepository userRepository, StatisticRepository statisticRepository, PollAssignmentService pollAssignmentService) {
         this.pollRepository = pollRepository;
         this.responseRepository = responseRepository;
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
         this.userRepository = userRepository;
         this.statisticRepository = statisticRepository;
+        this.pollAssignmentService = pollAssignmentService;
     }
 
     @Override
@@ -54,6 +58,8 @@ public class StatisticServiceImpl implements StatisticService {
         }
         statistic.setResult(Long.valueOf(result / questions.size()));
         statisticRepository.save(statistic);
+//        pollAssignmentService.save(responseDto);
+
     }
 
     @Override
@@ -62,8 +68,8 @@ public class StatisticServiceImpl implements StatisticService {
 
         StatisticDto statisticDto = new StatisticDto();
 
-        statisticDto.getStatisticMap().replace(StatisticVariants.GOOD.getDisplayName(), Double.valueOf(statistic.getResult() ));
-        statisticDto.getStatisticMap().replace(StatisticVariants.BAD.getDisplayName(), Double.valueOf(100 - statistic.getResult() ));
+        statisticDto.getStatisticMap().replace(StatisticVariants.GOOD.getDisplayName(), Double.valueOf(statistic.getResult()));
+        statisticDto.getStatisticMap().replace(StatisticVariants.BAD.getDisplayName(), Double.valueOf(100 - statistic.getResult()));
 
         return statisticDto;
     }

@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface StatisticService {
     StatisticDto filterByPoll(Long statisticId);
+
     public void saveData(ResponseDto responseDto);
 
 

@@ -89,7 +89,7 @@ public class PollManagerImpl implements PollManager {
 
     public boolean isPollAssignedToUser(Poll poll, Long userId) {
         //User user = poll.getUser();
-        PollAssignment assignedPoll = pollAssignmentRepository.findByPollId(poll.getId());
+        PollAssignment assignedPoll = pollAssignmentRepository.findByPollIdAndUserId(userId, poll.getId());
         if (assignedPoll == null) {
             throw new NullPointerException("assignedPoll not found with ID: " + poll.getId());
         }
@@ -112,6 +112,7 @@ public class PollManagerImpl implements PollManager {
     @Override
 
     public void savePollResults(ResponseDto responsePollDto) {
+
         User user = userRepository.findById(responsePollDto.getUserId()).orElseThrow(() -> new NullPointerException("Poll not found with ID: "));
         Poll poll = pollRepository.findById(responsePollDto.getPollId()).orElseThrow(() -> new NullPointerException("Poll not found with ID: "));
 
