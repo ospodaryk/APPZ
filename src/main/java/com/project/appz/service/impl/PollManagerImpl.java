@@ -102,11 +102,7 @@ public class PollManagerImpl implements PollManager {
 
     @Override
     public Poll findPollById(Long pollId, Long userId) {
-        Poll poll = pollRepository.findById(pollId).orElseThrow(() -> new NullPointerException("Poll not found with ID: " + pollId));
-        if (isPollAssignedToUser(poll, userId)) {
-            return poll;
-        } else throw new NullPointerException("user not found with ID: " + pollId);
-
+        return pollRepository.findById(pollId).orElseThrow(() -> new NullPointerException("Poll not found with ID: " + pollId));
     }
 
     @Override

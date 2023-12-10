@@ -46,13 +46,13 @@ public class PollAssignmentImplAssignment implements PollAssignmentService {
 
     @Override
     public List<ShortPollDto> findAllByUser(Long userId) {
-        List<PollAssignment> responsesByUser = pollAssignmentRepository.findByUserId(userId);
+        List<PollAssignment> pollAssignments = pollAssignmentRepository.findByUserId(userId);
         List<ShortPollDto> shortPollDtos = new ArrayList<>();
 
-        for (int i = 0; i < responsesByUser.size(); i++) {
+        for (int i = 0; i < pollAssignments.size(); i++) {
             shortPollDtos.add(ShortPollDto.builder()
-                    .id(responsesByUser.get(i).getId())
-                    .pollTitle(responsesByUser.get(i).getPoll().getPollTitle())
+                    .id(pollAssignments.get(i).getId())
+                    .pollTitle(pollAssignments.get(i).getPoll().getPollTitle())
                     .build());
         }
         return shortPollDtos;
@@ -62,7 +62,6 @@ public class PollAssignmentImplAssignment implements PollAssignmentService {
     public List<ShortPollDto> findAllRESULTSByUser(Long userId) {
         List<Statistic> responsesByUser = statisticRepository.findByUserId(userId);
         List<ShortPollDto> shortPollDtos = new ArrayList<>();
-
         for (int i = 0; i < responsesByUser.size(); i++) {
             List<Response> responses = responseRepository.findByUserIdAndPollId(userId, responsesByUser.get(i).getPoll().getId());
             if (!responses.isEmpty()) {

@@ -5,15 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShortPollDto {
-    Long id;
-    String pollTitle;
-    LocalDate pollDate;
-    DoctorDto doctor;
+public class UserAuthDto {
+    String token;
+    ProfileDto profile;
 }

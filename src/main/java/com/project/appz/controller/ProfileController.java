@@ -10,6 +10,7 @@ import com.project.appz.models.entities.User;
 import com.project.appz.repository.CabinetRepository;
 import com.project.appz.repository.UserRepository;
 import com.project.appz.service.MedicalRecordService;
+import com.project.appz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,40 +24,22 @@ public class ProfileController {
     private MedicalRecordService medicalRecordService;
     private UserRepository userRepository;
     private CabinetRepository cabinetRepository;
-
+    private UserService userService;
     @Autowired
 
-    public ProfileController(MedicalRecordService medicalRecordService, UserRepository userRepository, CabinetRepository cabinetRepository) {
+    public ProfileController(MedicalRecordService medicalRecordService, UserRepository userRepository, CabinetRepository cabinetRepository, UserService userService) {
         this.medicalRecordService = medicalRecordService;
         this.userRepository = userRepository;
         this.cabinetRepository = cabinetRepository;
+        this.userService = userService;
     }
+
 
 
     @GetMapping
     @ResponseBody
     public ProfileDto getProfileDto(@RequestParam(name = "userId") long userId) {
-        List<MedicalRecord> medicalRecords = medicalRecordService.getRecordByPatient(userId);
-        List<ShortMedicalRecordDto> shortMedicalRecordDtos = new ArrayList<>();
-        ProfileDto profileDto = new ProfileDto();
-        User user = userRepository.findById(userId).orElseThrow();
-        profileDto.setName(user.getName() + " " + user.getSurname());
-        profileDto.setId(userId);
-        List<DiseaseDTO> diseaseDTOS = new ArrayList<>();
-        for (int i = 0; i < medicalRecords.size(); i++) {
-            diseaseDTOS.add(DiseaseDTO.builder()
-                    .doctorSpecialisation(medicalRecords.get(i).getDoctor().getSpecialization())
-                    .doctorData(medicalRecords.get(i).getDoctor().getName() + " " + medicalRecords.get(i).getDoctor().getSurname())
-                    .title(medicalRecords.get(i).getDisease())
-                    .build());
-        }
-        profileDto.setDiseases(diseaseDTOS);
-        Doctor doctor = cabinetRepository.findByUserId(userId).getDoctor();
-        profileDto.setDoctorDto(DoctorDto.builder()
-                .name(doctor.getName() + " " + doctor.getSurname())
-                .specialisation(doctor.getSpecialization())
-                .build());
-        return profileDto;
+        return userService.findAll(userId);
     }
 
 }
