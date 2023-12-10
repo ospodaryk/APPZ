@@ -70,8 +70,17 @@ VALUES  (1, 'Так'),
         (24, 'Так'),
         (25, 'Ні'),
         (26, 'Так'),
-        (27, 'Ні');
-
+        (27, 'Ні'),
+        (28, 'Так'),
+        (29, 'Ні'),
+        (30, 'Так'),
+        (31, 'Ні'),
+        (32, 'Високий'),
+        (33, 'Середній')
+        (34, 'Низький'),
+        (35, 'Відсутній'),
+        (36, 'Так'),
+        (37, 'Ні');
 
 INSERT INTO public.question_block (id, block_name)
 VALUES
@@ -94,7 +103,11 @@ VALUES
     (8, 'Чи відчуваєте ви тривожність?', 21, 1),
     (9, 'Чи маєте ви шкідливі звички?', 23, 3),
     (10, 'Чи хторів хтось в сімї на рак?', 24, 5),
-    (11, 'Чи маєте хронічні захворювання?', 27, 6);
+    (11, 'Чи маєте хронічні захворювання?', 27, 6),
+    (12, 'Чи збалансоване у Вас харчування (80% поживної їжі, 20% шкідливої)?', 28, 3),
+    (13, 'Чи робили ви УЗД щитовидної залози впродовж останніх 6 місяців?', 30, 2),
+    (14, 'Який у Вас рівень стресу?', 35, 3),
+    (15, 'Чи приймаєте якісь ліки на постійній основі?', 37, 3);
 
 UPDATE public.answer SET question_id  = 1 WHERE id = 1;
 
@@ -148,6 +161,26 @@ UPDATE public.answer SET question_id  = 11 WHERE id = 26;
 
 UPDATE public.answer SET question_id  = 11 WHERE id = 27;
 
+UPDATE public.answer SET question_id  = 12 WHERE id = 28;
+
+UPDATE public.answer SET question_id  = 12 WHERE id = 29;
+
+UPDATE public.answer SET question_id  = 13 WHERE id = 30;
+
+UPDATE public.answer SET question_id  = 13 WHERE id = 31;
+
+UPDATE public.answer SET question_id  = 14 WHERE id = 32;
+
+UPDATE public.answer SET question_id  = 14 WHERE id = 33;
+
+UPDATE public.answer SET question_id  = 14 WHERE id = 34;
+
+UPDATE public.answer SET question_id  = 14 WHERE id = 35;
+
+UPDATE public.answer SET question_id  = 15 WHERE id = 36;
+
+UPDATE public.answer SET question_id  = 15 WHERE id = 37;
+
 
 
 INSERT INTO public.cabinet (id, disease, doctor_id, user_id)
@@ -185,22 +218,34 @@ VALUES
     (6, 'Фінальне опитування симптомів');
 
 INSERT INTO public.response (id, response_date, answer_id, poll_id, question_id, user_id)
-values (DEFAULT,'2023-12-01',1,1, 5,1),
+values
+    (DEFAULT,'2023-12-01',19,1, 5,1),
     (DEFAULT,'2023-12-01',3,1, 6,1),
-    (DEFAULT,'2023-12-01',2,1, 8,1),
-    (DEFAULT,'2023-12-01',2,1, 9,1),
-    (DEFAULT,'2023-12-01',2,1, 10,1),
+    (DEFAULT,'2023-12-01',21,1, 8,1),
+    (DEFAULT,'2023-12-01',22,1, 9,1),
+    (DEFAULT,'2023-12-01',24,1, 10,1),
+
     (DEFAULT,'2023-12-02',1,2, 11,2),
     (DEFAULT,'2023-12-02',1,2, 1,2),
     (DEFAULT,'2023-12-02',1,2, 2,2),
     (DEFAULT,'2023-12-02',2,2, 3,2),
     (DEFAULT,'2023-12-02',1,2, 5,2),
     (DEFAULT,'2023-12-02',7,2, 7,2),
-    (DEFAULT,'2023-12-02',2,2, 8,2);
+    (DEFAULT,'2023-12-02',2,2, 8,2),
+
+    (DEFAULT,'2023-12-03',16,3, 4,3),
+    (DEFAULT,'2023-12-03',23,3, 9,3),
+    (DEFAULT,'2023-12-03',26,3, 11,3),
+    (DEFAULT,'2023-12-03',29,3, 12,3),
+    (DEFAULT,'2023-12-03',31,3, 13,3),
+    (DEFAULT,'2023-12-03',35,3, 14,3),
+    (DEFAULT,'2023-12-03',37,3, 15,3),
+    (DEFAULT,'2023-12-03',21,3, 8,3);
+
 
 INSERT INTO public.statistic (id, poll_id, result, user_id)
 VALUES
-    (DEFAULT,1, 100, 1),
+    (DEFAULT,1, 55, 1),
     (DEFAULT,2, 85, 2),
     (DEFAULT,3, 90, 3),
     (DEFAULT,4, 75, 4),
