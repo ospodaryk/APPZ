@@ -83,6 +83,10 @@ public class StatisticServiceImpl implements StatisticService {
     }
 
     @Override
+    public Statistic findById(Long statisticId) {
+      return statisticRepository.findById(statisticId).orElseThrow();
+    }
+    @Override
     public StatisticDto filterByPoll(Long statisticId) {
         Statistic statistic = statisticRepository.findById(statisticId).orElseThrow();
 

@@ -3,6 +3,9 @@ package com.project.appz.controller;
 import com.project.appz.models.dto.BigStatisticDto;
 import com.project.appz.models.dto.ShortPollDto;
 import com.project.appz.models.dto.StatisticDto;
+import com.project.appz.models.entities.Poll;
+
+import com.project.appz.models.entities.Statistic;
 import com.project.appz.repository.PollRepository;
 import com.project.appz.service.PollAssignmentService;
 import com.project.appz.service.QuestionService;
@@ -20,15 +23,16 @@ public class StatisticController {
     private StatisticService statisticService;
     private PollAssignmentService pollAssignmentService;
     private QuestionService questionService;
-    PollRepository pollRepository;
+    private PollRepository pollRepository;
     @Autowired
-
     public StatisticController(StatisticService statisticService, PollAssignmentService pollAssignmentService, QuestionService questionService, PollRepository pollRepository) {
         this.statisticService = statisticService;
         this.pollAssignmentService = pollAssignmentService;
         this.questionService = questionService;
         this.pollRepository = pollRepository;
     }
+
+
 
     @GetMapping("/{blockId}")
     @ResponseBody
@@ -54,9 +58,11 @@ public class StatisticController {
         } else {
             bigStatisticDto.setStatistic(statisticService.filterByPoll(pollId));
         }
-        bigStatisticDto.setTitleOfPoll(pollRepository.findById(pollId).get().getPollTitle());
+        Statistic statistic=statisticService.findById(pollId);
+        Poll poll=pollRepository.findById(statistic.getPoll().getId()).get();
+        bigStatisticDto.setTitleOfPoll(poll.getPollTitle());
         bigStatisticDto.setFilterId(filterId);
-        bigStatisticDto.setQuestionBlockSet(questionService.getQuestionBlockByPoll(userId, pollId));
+        bigStatisticDto.setQuestionBlockSet(questionService.getQuestionBlockByPoll(userId, poll.getId()));
         return bigStatisticDto;
     }
 }

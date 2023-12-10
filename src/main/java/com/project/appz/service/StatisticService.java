@@ -3,6 +3,7 @@ package com.project.appz.service;
 import com.project.appz.models.dto.ResponseDto;
 import com.project.appz.models.dto.StatisticDto;
 import com.project.appz.models.entities.Poll;
+import com.project.appz.models.entities.Statistic;
 import com.project.appz.models.entities.User;
 import com.project.appz.models.enums.Disease;
 
@@ -26,4 +27,5 @@ public interface StatisticService {
     public StatisticDto filterByBlockAndPoll(Long patient, Long pollId, Long blockId);
 
     public List<StatisticDto> filterByDisease(Long patient, String disease);
+    Statistic findById(Long statisticId);
 }
