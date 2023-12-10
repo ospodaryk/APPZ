@@ -51,12 +51,12 @@ public class StatisticServiceImpl implements StatisticService {
         statistic.setUser(user);
         statistic.setPoll(poll);
         int result = 0;
-        List<ResponseQuestionPollDto> answerDtoList=responseDto.getAnswers();
+        List<ResponseQuestionPollDto> answerDtoList = responseDto.getAnswers();
 
         Map<Long, Long> questions = new HashMap<>();
         for (int i = 0; i < answerDtoList.size(); i++) {
-            ResponseQuestionPollDto responseQuestionPollDto=answerDtoList.get(i);
-            questions.put(responseQuestionPollDto.getQuestionId(),responseQuestionPollDto.getAnswerId());
+            ResponseQuestionPollDto responseQuestionPollDto = answerDtoList.get(i);
+            questions.put(responseQuestionPollDto.getQuestionId(), responseQuestionPollDto.getAnswerId());
         }
         for (Long key : questions.keySet()) {
             Question question = questionRepository.findById(key).orElseThrow(() -> new NullPointerException("Poll not found with ID: "));
@@ -65,7 +65,7 @@ public class StatisticServiceImpl implements StatisticService {
                 result++;
             }
         }
-        statistic.setResult(Long.valueOf(result / questions.size()));
+        statistic.setResult(Long.valueOf(((result * 100)/ questions.size())));
         statisticRepository.save(statistic);
         int maxRetries = 3;
         int retryCount = 0;
@@ -78,7 +78,8 @@ public class StatisticServiceImpl implements StatisticService {
             } catch (ObjectOptimisticLockingFailureException ex) {
                 retryCount++;
                 // Log or handle the exception if needed
-            }}
+            }
+        }
     }
 
     @Override
@@ -111,7 +112,7 @@ public class StatisticServiceImpl implements StatisticService {
         Double statistic;
 
         try {
-            statistic  = Double.valueOf((result / responses.size()) * 100);
+            statistic = Double.valueOf((result * 100) / responses.size());
         } catch (ArithmeticException ex) {
             statistic = 0D;
         }
@@ -138,7 +139,7 @@ public class StatisticServiceImpl implements StatisticService {
                 result++;
             }
         }
-        Double statistic = Double.valueOf((result / responses.size()) * 100);
+        Double statistic = Double.valueOf(((result * 100)/ responses.size()) );
         StatisticDto statisticDto = new StatisticDto();
 
         statisticDto.setPositive(Double.valueOf(statistic));
