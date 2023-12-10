@@ -43,36 +43,34 @@ VALUES (DEFAULT, 'emily.watson@healthmail.com', 'Emily', '380601234567', 'Cardio
        (DEFAULT, 'william.johnson@healthmail.com', 'William', '380601234576', 'Endocrinology', 'Johnson',
         '$2a$10$qiG6YVCCLwVIaLKOGChmru7cf7v1P5Ohrxp3bpyQf56GdvpmKr3U6');
 
-INSERT INTO public.answer (id, answer_text, question_id)
-VALUES  (1, 'Так', 1),
-        (2, 'Ні', 2),
-        (3, 'Близько трьох разів на тиждень', 6),
-        (4, 'Не маю активностей', 6),
-        (5, 'Більше пяти разів на тижлень', 6),
-        (6, 'Менше пяти разів на тиждень', 6),
-        (7, 'Біль при сечовипусканні', 7),
-        (8, 'Запаморочення', 7),
-        (9, 'Температура', 7),
-        (10, 'Різка біль', 7),
+INSERT INTO public.answer (id, answer_text)
+VALUES  (1, 'Так'),
+        (2, 'Ні'),
+        (3, 'Близько трьох разів на тиждень'),
+        (4, 'Не маю активностей'),
+        (5, 'Більше пяти разів на тижлень'),
+        (6, 'Менше пяти разів на тиждень'),
+        (7, 'Біль при сечовипусканні'),
+        (8, 'Запаморочення'),
+        (9, 'Температура'),
+        (10, 'Різка біль'),
         (11, 'Головний біль'),
-        (12, 'Так', 2),
-        (13, 'Ні', 2),
-        (14, 'Так', 3),
-        (15, 'Ні', 3),
-        (16, 'Так', 4),
-        (17, 'Ні', 4),
-        (18, 'Так', 5),
-        (19, 'Ні', 5),
-        (20, 'Так', 5),
-        (21, 'Ні', 5),
-        (22, 'Так', 8),
-        (23, 'Ні', 8),
-        (24, 'Так', 9),
-        (25, 'Ні', 9),
-        (26, 'Так', 10),
-        (27, 'Ні', 10),
-        (28, 'Так', 11),
-        (29, 'Ні', 11),
+        (12, 'Так'),
+        (13, 'Ні'),
+        (14, 'Так'),
+        (15, 'Ні'),
+        (16, 'Так'),
+        (17, 'Ні'),
+        (18, 'Так'),
+        (19, 'Ні'),
+        (20, 'Так'),
+        (21, 'Ні'),
+        (22, 'Так'),
+        (23, 'Ні'),
+        (24, 'Так'),
+        (25, 'Ні'),
+        (26, 'Так'),
+        (27, 'Ні');
 
 
 INSERT INTO public.question_block (id, block_name)
@@ -97,6 +95,60 @@ VALUES
     (9, 'Чи маєте ви шкідливі звички?', 23, 3),
     (10, 'Чи хторів хтось в сімї на рак?', 24, 5),
     (11, 'Чи маєте хронічні захворювання?', 27, 6);
+
+UPDATE public.answer SET question_id  = 1 WHERE id = 1;
+
+UPDATE public.answer SET question_id  = 1 WHERE id = 2;
+
+UPDATE public.answer SET question_id  = 6 WHERE id = 3;
+
+UPDATE public.answer SET question_id  = 6 WHERE id = 4;
+
+UPDATE public.answer SET question_id  = 6 WHERE id = 5;
+
+UPDATE public.answer SET question_id  = 6 WHERE id = 6;
+
+UPDATE public.answer SET question_id  = 7 WHERE id = 7;
+
+UPDATE public.answer SET question_id  = 7 WHERE id = 8;
+
+UPDATE public.answer SET question_id  = 7 WHERE id = 9;
+
+UPDATE public.answer SET question_id  = 7 WHERE id = 10;
+
+UPDATE public.answer SET question_id  = 2 WHERE id = 12;
+
+UPDATE public.answer SET question_id  = 2 WHERE id = 13;
+
+UPDATE public.answer SET question_id  = 3 WHERE id = 14;
+
+UPDATE public.answer SET question_id  = 3 WHERE id = 15;
+
+UPDATE public.answer SET question_id  = 4 WHERE id = 16;
+
+UPDATE public.answer SET question_id  = 4 WHERE id = 17;
+
+UPDATE public.answer SET question_id  = 5 WHERE id = 18;
+
+UPDATE public.answer SET question_id  = 5 WHERE id = 19;
+
+UPDATE public.answer SET question_id  = 8 WHERE id = 20;
+
+UPDATE public.answer SET question_id  = 8 WHERE id = 21;
+
+UPDATE public.answer SET question_id  = 9 WHERE id = 22;
+
+UPDATE public.answer SET question_id  = 9 WHERE id = 23;
+
+UPDATE public.answer SET question_id  = 10 WHERE id = 24;
+
+UPDATE public.answer SET question_id  = 10 WHERE id = 25;
+
+UPDATE public.answer SET question_id  = 11 WHERE id = 26;
+
+UPDATE public.answer SET question_id  = 11 WHERE id = 27;
+
+
 
 INSERT INTO public.cabinet (id, disease, doctor_id, user_id)
 values  (DEFAULT, 'Астма', 1, 1),
