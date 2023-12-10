@@ -18,7 +18,7 @@ public class Logger {
         }
     }
 
-    public void log(String method, String message) {
+    public void log(String method) {
         // logging
     }
 

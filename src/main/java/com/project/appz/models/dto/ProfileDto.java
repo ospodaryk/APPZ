@@ -5,16 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PollDto {
-    Long pollId;
-    String pollTitle;
-    List<QuestionDto> questionDtos = new ArrayList<>();
+public class ProfileDto {
+    List<DiseaseDTO> diseases;
+    private String name;
+    private long id;
+    private DoctorDto doctorDto;
 
 }

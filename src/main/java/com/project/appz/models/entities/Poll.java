@@ -25,4 +25,7 @@ public class Poll {
 
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Question> questions = new ArrayList<>();
+
+    @Column(name = "disease")
+    private String disease;
 }

@@ -5,16 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PollDto {
-    Long pollId;
+public class ShortPollDto {
+    Long id;
     String pollTitle;
-    List<QuestionDto> questionDtos = new ArrayList<>();
-
+    LocalDate pollDate;
 }

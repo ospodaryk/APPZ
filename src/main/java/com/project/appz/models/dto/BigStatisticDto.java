@@ -1,20 +1,19 @@
 package com.project.appz.models.dto;
 
+import com.project.appz.models.entities.QuestionBlock;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PollDto {
-    Long pollId;
-    String pollTitle;
-    List<QuestionDto> questionDtos = new ArrayList<>();
-
+public class BigStatisticDto {
+    Long filterId;
+    StatisticDto statisticDto;
+    Set<QuestionBlock> questionBlockSet;
 }
