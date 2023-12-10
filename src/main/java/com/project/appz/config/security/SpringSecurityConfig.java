@@ -13,7 +13,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.HandlerExceptionResolver;
+
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -24,6 +29,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtTokenRepository jwtTokenRepository;
+
     @Autowired
     @Qualifier("handlerExceptionResolver")
     private HandlerExceptionResolver resolver;
@@ -35,7 +41,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -47,17 +53,32 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .cors().and() // Integrate CORS configuration
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .and()
-                .addFilterAt(new JwtCsrfFilter(jwtTokenRepository, resolver), CsrfFilter.class)
-                .csrf().ignoringAntMatchers("/**")
+                .csrf()
+                .ignoringAntMatchers("/auth/login") // Specify CSRF ignoring for specific endpoints
+                // .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) // Uncomment for CSRF token use
                 .and()
                 .authorizeRequests()
-                .antMatchers("/auth/login")
-                .authenticated()
+                .antMatchers("/auth/login").permitAll() // Make sure login is accessible to everyone
+                .anyRequest().authenticated() // Secure other endpoints
                 .and()
                 .httpBasic()
                 .authenticationEntryPoint(((request, response, e) -> resolver.resolveException(request, response, null, e)));
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOriginPatterns(Arrays.asList("*")); // Set allowed origins
+        configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+        configuration.setAllowCredentials(true);
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type", "X-CSRF-TOKEN"));
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 }
