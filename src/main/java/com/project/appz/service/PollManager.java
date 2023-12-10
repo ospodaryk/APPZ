@@ -4,7 +4,6 @@ import com.project.appz.models.dto.PollAssignmentDto;
 import com.project.appz.models.dto.ResponseDto;
 import com.project.appz.models.entities.Poll;
 import com.project.appz.models.entities.Statistic;
-import com.project.appz.models.entities.User;
 
 import java.util.List;
 

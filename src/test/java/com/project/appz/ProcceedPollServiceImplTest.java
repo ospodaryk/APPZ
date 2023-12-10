@@ -1,7 +1,7 @@
 //package com.project.appz;
 //
 //import com.project.appz.models.entities.Poll;
-//import com.project.appz.models.entities.Statistic;
+//import com.project.appz.models.entities.BigStatisticDto;
 //import com.project.appz.repository.PollRepository;
 //import com.project.appz.repository.ResponsePollRepository;
 //import com.project.appz.repository.UserRepository;
@@ -88,7 +88,7 @@
 //    @Test
 //    void testSavePollResults_ValidData_NoExceptions() {
 //        long pollId = 1L;
-//        Statistic statistic = ModelUtils.getResponsePoll();
+//        BigStatisticDto statistic = ModelUtils.getResponsePoll();
 //        Mockito.when(pollRepository.findById(pollId)).thenReturn(Optional.of(ModelUtils.getPoll()));
 //
 //        service.savePollResults(pollId, statistic);
@@ -97,14 +97,14 @@
 //    @Test
 //    void testSavePollResults_NonExistentPoll_ThrowsNotFoundException() {
 //        long nonExistentPollId = 123L;
-//        Statistic statistic = new Statistic();
+//        BigStatisticDto statistic = new BigStatisticDto();
 //        assertThrows(NullPointerException.class, () -> service.savePollResults(nonExistentPollId, statistic));
 //    }
 //
 //    @Test
 //    void testSavePollResults_NoData_ThrowsIllegalArgumentException() {
 //        long pollId = 1L;
-//        Statistic statistic = null;
+//        BigStatisticDto statistic = null;
 //        assertThrows(NullPointerException.class, () -> service.savePollResults(pollId, statistic));
 //    }
 //

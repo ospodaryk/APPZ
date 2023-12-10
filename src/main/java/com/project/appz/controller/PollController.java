@@ -1,14 +1,9 @@
 package com.project.appz.controller;
 
-import com.project.appz.models.dto.PollAssignmentDto;
-import com.project.appz.models.dto.AnswerDto;
-import com.project.appz.models.dto.PollDto;
-import com.project.appz.models.dto.QuestionDto;
-import com.project.appz.models.dto.ResponseDto;
+import com.project.appz.models.dto.*;
 import com.project.appz.models.entities.Poll;
 import com.project.appz.service.PollManager;
 import com.project.appz.service.StatisticService;
-import com.project.appz.service.impl.StatisticServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

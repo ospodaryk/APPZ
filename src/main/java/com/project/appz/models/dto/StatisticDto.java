@@ -1,10 +1,9 @@
 package com.project.appz.models.dto;
 
+import com.project.appz.models.enums.StatisticVariants;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import com.project.appz.models.enums.StatisticVariants;
 
 import java.util.HashMap;
 import java.util.Map;
