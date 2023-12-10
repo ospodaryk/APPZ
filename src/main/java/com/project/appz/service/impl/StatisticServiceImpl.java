@@ -108,7 +108,14 @@ public class StatisticServiceImpl implements StatisticService {
                 result++;
             }
         }
-        Double statistic = Double.valueOf((result / responses.size()) * 100);
+        Double statistic;
+
+        try {
+            statistic  = Double.valueOf((result / responses.size()) * 100);
+        } catch (ArithmeticException ex) {
+            statistic = 0D;
+        }
+
         StatisticDto statisticDto = new StatisticDto();
 
         statisticDto.setPositive(Double.valueOf(statistic));

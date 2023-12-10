@@ -50,7 +50,7 @@ public class StatisticController {
             @RequestParam(name = "userId") Long userId) {
         BigStatisticDto bigStatisticDto = new BigStatisticDto();
         if (filterId != null) {
-            bigStatisticDto.setStatistic(statisticService.filterByBlockAndPoll(userId, filterId, pollId));
+            bigStatisticDto.setStatistic(statisticService.filterByBlockAndPoll(userId, pollId, filterId));
         } else {
             bigStatisticDto.setStatistic(statisticService.filterByPoll(pollId));
         }
