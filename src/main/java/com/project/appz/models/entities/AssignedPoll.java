@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Table(name = "assigned_poll")
 public class AssignedPoll {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
