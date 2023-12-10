@@ -36,7 +36,7 @@ public class StatisticController {
     @GetMapping("/allpolls")
     @ResponseBody
     public List<ShortPollDto> gettCompletedPolls(@RequestParam(name = "userId") long userId) {
-        return pollAssignmentService.findAllByUser(userId);
+        return pollAssignmentService.findAllRESULTSByUser(userId);
     }
 
     @GetMapping
@@ -48,10 +48,8 @@ public class StatisticController {
         BigStatisticDto bigStatisticDto = new BigStatisticDto();
         if (filterId != null) {
             bigStatisticDto.setStatisticDto(statisticService.filterByBlockAndPoll(userId, filterId, pollId));
-
         } else {
             bigStatisticDto.setStatisticDto(statisticService.filterByPoll(pollId));
-
         }
         bigStatisticDto.setFilterId(filterId);
         bigStatisticDto.setQuestionBlockSet(questionService.getQuestionBlockByPoll(userId, pollId));
