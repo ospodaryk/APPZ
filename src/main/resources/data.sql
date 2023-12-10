@@ -136,7 +136,7 @@ VALUES
     (DEFAULT,5, 95, 5),
     (DEFAULT,6, 80, 6);
 
-INSERT INTO public.assigned_poll (id, doctor_id, user_id, poll_id, deadline, created_date, is_completed)
+INSERT INTO public.poll_assignment (id, doctor_id, user_id, poll_id, deadline, created_date, is_completed)
 values
 (DEFAULT, 1, 1, 1, '2023-12-31', '2023-12-01', false),
 (DEFAULT, 2, 2, 2, '2023-12-30', '2023-12-02', false),
