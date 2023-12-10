@@ -23,17 +23,15 @@ public class StatisticServiceImpl implements StatisticService {
     Logger logger;
     private final PollRepository pollRepository;
     private final ResponseRepository responseRepository;
-    private final AssignedPollRepository assignedPollRepository;
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
     private final UserRepository userRepository;
     private final StatisticRepository statisticRepository;
 
     @Autowired
-    public StatisticServiceImpl(PollRepository pollRepository, ResponseRepository responseRepository, AssignedPollRepository assignedPollRepository, QuestionRepository questionRepository, AnswerRepository answerRepository, UserRepository userRepository, StatisticRepository statisticRepository) {
+    public StatisticServiceImpl(PollRepository pollRepository, ResponseRepository responseRepository,  QuestionRepository questionRepository, AnswerRepository answerRepository, UserRepository userRepository, StatisticRepository statisticRepository) {
         this.pollRepository = pollRepository;
         this.responseRepository = responseRepository;
-        this.assignedPollRepository = assignedPollRepository;
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
         this.userRepository = userRepository;
