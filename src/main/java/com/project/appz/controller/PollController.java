@@ -1,5 +1,6 @@
 package com.project.appz.controller;
 
+import com.project.appz.models.dto.PollAssignmentDto;
 import com.project.appz.models.dto.AnswerDto;
 import com.project.appz.models.dto.PollDto;
 import com.project.appz.models.dto.QuestionDto;
@@ -32,6 +33,12 @@ public class PollController {
     public ResponseEntity<Void> submitResponse(@RequestBody ResponseDto responseDto) {
         pollManager.savePollResults(responseDto);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PostMapping("/assign")
+    public ResponseEntity<Void> assignPollToUser(@RequestBody PollAssignmentDto pollAssignmentDto) {
+        pollManager.assignPoll(pollAssignmentDto);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     private PollDto map(Poll poll) {
