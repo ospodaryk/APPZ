@@ -157,4 +157,28 @@ values
 (DEFAULT, 10, 10, 10, '2023-12-22', '2023-12-10', false);
 
 
+INSERT INTO public.question_block (id, block_name)
+VALUES
+(DEFAULT,'Questions about Body Health'),
+(DEFAULT,'General Health and Wellness Questions'),
+(DEFAULT,'Questions about Diet and Nutrition'),
+(DEFAULT,'Mental Health and Stress Management Questions'),
+(DEFAULT,'Chronic Conditions and Disease Management'),
+(DEFAULT,'Medication and Treatment Questions'),
+(DEFAULT,'Family Health History Questions'),
+(DEFAULT,'Lifestyle and Exercise Questions'),
+(DEFAULT,'Symptom Assessment and Reporting'),
+(DEFAULT,'Preventive Health and Checkups');
 
+INSERT INTO public.poll_questions (poll_id, question_id)
+VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(2, 5),
+(2, 6),
+(2, 1),
+(2, 2),
+(2, 8),
+(2, 10);
