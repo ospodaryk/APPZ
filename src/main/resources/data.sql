@@ -65,7 +65,7 @@ VALUES
 (5,'Запитання про хвороби в сімї'),
 (6,'Запитання про хронічні захворювання');
 
-INSERT INTO public.question (id, question_text, answer_id, block_id)
+INSERT INTO public.question (id, question_text, answer_id, question_block)
 VALUES
     (1, 'Чи часто у Вас болить голова?', 2, 1),
     (2, 'Чи відчуваєте ви нудоту?', 2, 1),
@@ -136,7 +136,7 @@ VALUES
     (DEFAULT,5, 95, 5),
     (DEFAULT,6, 80, 6);
 
-INSERT INTO public.assigned_poll (id, doctor_id, user_id, poll_id, deadline, created_date, is_completed)
+INSERT INTO public.poll_assignment (id, doctor_id, user_id, poll_id, deadline, created_date, is_completed)
 values
 (DEFAULT, 1, 1, 1, '2023-12-31', '2023-12-01', false),
 (DEFAULT, 2, 2, 2, '2023-12-30', '2023-12-02', false),
