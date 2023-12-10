@@ -2,12 +2,14 @@ package com.project.appz.controller;
 
 import com.project.appz.models.dto.*;
 import com.project.appz.models.entities.Poll;
+import com.project.appz.service.PollAssignmentService;
 import com.project.appz.service.PollManager;
 import com.project.appz.service.StatisticService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
@@ -16,14 +18,23 @@ public class PollController {
 
     private PollManager pollManager;
     private StatisticService statisticService;
+    private PollAssignmentService pollAssignmentService;
 
-    public PollController(PollManager pollManager, StatisticService statisticService) {
+    public PollController(PollManager pollManager, StatisticService statisticService, PollAssignmentService pollAssignmentService) {
         this.pollManager = pollManager;
         this.statisticService = statisticService;
+        this.pollAssignmentService = pollAssignmentService;
+    }
+
+    @GetMapping
+    @ResponseBody
+    public List<ShortPollDto> getAllPollForUserById(@RequestParam(name = "userId") long userId) {
+        return pollAssignmentService.findAllByUser(userId);
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody PollDto getPollForUserById(@PathVariable long id, @RequestParam(name = "userId") long userId) {
+    @ResponseBody
+    public PollDto getPollForUserById(@PathVariable long id, @RequestParam(name = "userId") long userId) {
         Poll poll = pollManager.findPollById(id, userId);
         return map(poll);
     }
