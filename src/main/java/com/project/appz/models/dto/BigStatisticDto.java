@@ -14,6 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class BigStatisticDto {
     Long filterId;
+    String titleOfPoll;
     StatisticDto statisticDto;
     Set<QuestionBlock> questionBlockSet;
 }
