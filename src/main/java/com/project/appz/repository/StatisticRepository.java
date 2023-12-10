@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface StatisticRepository extends JpaRepository<Statistic, Long> {
     List<Statistic> findByUserId(Long user);
+
     @Query(value = "SELECT id, result, poll_id, user_id "
             + "FROM public.statistic "
             + "WHERE user_id = :userId AND poll_id = :pollId", nativeQuery = true)
