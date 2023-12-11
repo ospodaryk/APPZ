@@ -197,16 +197,17 @@ values  (DEFAULT, 'Астма', 1, 1),
 
 INSERT INTO public.medical_record (id, patient_id, doctor_id, created_time, doctor_notes, disease)
 VALUES
-    (DEFAULT, 1, 1, '2023-01-01T08:00:00', 'Patient in good health, no immediate concerns.', 'Астма'),
-    (DEFAULT, 1, 2, '2023-01-02T09:00:00', 'Patient reports mild eczema, prescribed topical cream.', 'Мігрень'),
-    (DEFAULT, 3, 3, '2023-01-03T10:30:00', 'Regular migraine, advised lifestyle changes and medication.', 'Діабет'),
-    (DEFAULT, 4, 4, '2023-01-04T11:15:00', 'Asthma check-up, no change in medication needed.', 'Застуда'),
-    (DEFAULT, 5, 5, '2023-01-05T14:00:00', 'Routine cancer follow-up, stable condition.', 'COVID-19'),
-    (DEFAULT, 6, 6, '2023-01-06T16:00:00', 'Discussed anxiety management strategies.', 'Цистит'),
-    (DEFAULT, 7, 7, '2023-01-07T10:00:00', 'Diabetes management, blood sugar levels stable.', 'Отруєння'),
-    (DEFAULT, 8, 8, '2023-01-08T13:00:00', 'Assessed knee injury, recommended physiotherapy.', 'Переохолодження'),
-    (DEFAULT, 9, 9, '2023-01-09T15:30:00', 'IBS symptoms present, dietary adjustments suggested.', 'Рак'),
-    (DEFAULT, 10, 10, '2023-01-10T17:00:00', 'Thyroid function normal, continue current medication.', 'Дизбактеріоз');
+    (DEFAULT, 1, 1, '2023-01-01T08:00:00', 'Пацієнт у хорошому стані здоров’я, негайних проблем немає.', 'Астма'),
+    (DEFAULT, 1, 2, '2023-01-02T09:00:00', 'Пацієнт скаржиться на легку екзему, призначено місцевий крем.', 'Мігрень'),
+    (DEFAULT, 3, 3, '2023-01-03T10:30:00', 'Регулярний мігрень, пораджено зміни в способі життя та медикацію.', 'Діабет'),
+    (DEFAULT, 4, 4, '2023-01-04T11:15:00', 'Перевірка астми, зміни в медикації не потрібні.', 'Застуда'),
+    (DEFAULT, 5, 5, '2023-01-05T14:00:00', 'Рутинний контроль за раком, стабільний стан.', 'COVID-19'),
+    (DEFAULT, 6, 6, '2023-01-06T16:00:00', 'Обговорено стратегії керування тривогою.', 'Цистит'),
+    (DEFAULT, 7, 7, '2023-01-07T10:00:00', 'Керування діабетом, рівень цукру в крові стабільний.', 'Отруєння'),
+    (DEFAULT, 8, 8, '2023-01-08T13:00:00', 'Оцінено травму коліна, рекомендовано фізіотерапію.', 'Переохолодження'),
+    (DEFAULT, 9, 9, '2023-01-09T15:30:00', 'Присутні симптоми СРК, запропоновано корекцію дієти.', 'Рак'),
+    (DEFAULT, 10, 10, '2023-01-10T17:00:00', 'Функція щитовидної залози нормальна, продовжуйте поточну медикацію.', 'Дизбактеріоз');
+
 
 INSERT INTO public.poll (id, poll_title)
 VALUES
@@ -251,7 +252,7 @@ VALUES
 INSERT INTO public.poll_assignment (id, doctor_id, user_id, poll_id, deadline, created_date, is_completed)
 values
 (DEFAULT, 1, 1, 1, '2023-12-02', '2023-12-01', false),
-(DEFAULT, 2, 2, 1, '2023-12-03', '2023-12-02', false),
+(DEFAULT, 2, 1, 1, '2023-12-03', '2023-12-02', false),
 (DEFAULT, 3, 3, 3, '2023-12-12', '2023-12-03', false),
 (DEFAULT, 4, 4, 4, '2023-12-05', '2023-12-04', false),
 (DEFAULT, 5, 5, 5, '2023-12-06', '2023-12-05', true),
