@@ -185,7 +185,7 @@ UPDATE public.answer SET question_id  = 15 WHERE id = 37;
 
 INSERT INTO public.cabinet (id, disease, doctor_id, user_id)
 values  (DEFAULT, 'Астма', 1, 1),
-        (DEFAULT, 'Мігрень', 2, 1),
+        (DEFAULT, 'Мігрень', 2, 2),
         (DEFAULT, 'Діабет', 3, 3),
         (DEFAULT, 'Застуда', 4, 4),
         (DEFAULT, 'COVID-19', 5, 5),
