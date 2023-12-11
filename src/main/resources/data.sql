@@ -252,7 +252,7 @@ VALUES
 INSERT INTO public.poll_assignment (id, doctor_id, user_id, poll_id, deadline, created_date, is_completed)
 values
 (DEFAULT, 1, 1, 1, '2023-12-02', '2023-12-01', false),
-(DEFAULT, 2, 1, 1, '2023-12-03', '2023-12-02', false),
+(DEFAULT, 2, 2, 1, '2023-12-03', '2023-12-02', false),
 (DEFAULT, 3, 3, 3, '2023-12-12', '2023-12-03', false),
 (DEFAULT, 4, 4, 4, '2023-12-05', '2023-12-04', false),
 (DEFAULT, 5, 5, 5, '2023-12-06', '2023-12-05', true),
