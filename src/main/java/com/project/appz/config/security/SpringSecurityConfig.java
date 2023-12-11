@@ -58,8 +58,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .and()
                 .csrf()
-                .ignoringAntMatchers("/auth/login") // Specify CSRF ignoring for specific endpoints
-                .ignoringAntMatchers("/poll/response") // Specify CSRF ignoring for specific endpoints
+                .ignoringAntMatchers("/auth/login")
+                .ignoringAntMatchers("/poll/response")
+                .ignoringAntMatchers("/poll/assign")
                 .ignoringAntMatchers("/log") // Specify CSRF ignoring for specific endpoints
                 .and()
                 .authorizeRequests()
