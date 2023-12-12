@@ -26,7 +26,30 @@ public final class ModelUtils {
                 .email("sheva@gmail.com")
                 .build();
     }
-
+    public static final QuestionBlock getQuestionBlock() {
+        return QuestionBlock.builder()
+                .id(1L)
+                .blockName("QuestionBlock")
+                .build();
+    }
+    public static final Question getQuestion() {
+        return Question.builder()
+                .questionBlock(getQuestionBlock())
+                .questionText("question Text")
+                .correctAnswer(getAnswerCorrect())
+                .build();
+    }
+    public static final Answer getAnswerCorrect() {
+        return Answer.builder()
+                .answerText("AnswerCorrect text")
+                .build();
+    }
+    public static final Answer getAnswer() {
+        return Answer.builder()
+                .answerText("Answer text")
+                .question(getQuestion())
+                .build();
+    }
     public static final MedicalRecord getMedicalRecord_ACNE() {
         return MedicalRecord.builder()
                 .createdTime(LocalDateTime.now())

@@ -1,7 +1,6 @@
 //package com.project.appz;
 //
 //import com.project.appz.models.entities.Poll;
-//import com.project.appz.models.entities.BigStatisticDto;
 //import com.project.appz.repository.PollRepository;
 //import com.project.appz.repository.ResponsePollRepository;
 //import com.project.appz.repository.UserRepository;
