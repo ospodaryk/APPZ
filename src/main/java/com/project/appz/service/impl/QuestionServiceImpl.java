@@ -16,28 +16,17 @@ import java.util.Set;
 @Service
 public class QuestionServiceImpl implements QuestionService {
     private final PollRepository pollRepository;
-    private final ResponseRepository responseRepository;
-    private final QuestionRepository questionRepository;
-    private final AnswerRepository answerRepository;
-    private final UserRepository userRepository;
-    private final StatisticRepository statisticRepository;
-    private final PollAssignmentRepository pollAssignmentRepository;
     Logger logger;
 
     @Autowired
-    public QuestionServiceImpl(PollRepository pollRepository, ResponseRepository responseRepository, QuestionRepository questionRepository, AnswerRepository answerRepository, UserRepository userRepository, StatisticRepository statisticRepository, PollAssignmentRepository pollAssignmentRepository) {
+    public QuestionServiceImpl(PollRepository pollRepository) {
         this.pollRepository = pollRepository;
-        this.responseRepository = responseRepository;
-        this.questionRepository = questionRepository;
-        this.answerRepository = answerRepository;
-        this.userRepository = userRepository;
-        this.statisticRepository = statisticRepository;
-        this.pollAssignmentRepository = pollAssignmentRepository;
     }
+
 
     @Override
     public Set<QuestionBlock> getQuestionBlockByPoll(long userId, Long pollId) {
-        Poll poll = pollRepository.findById(pollId).orElseThrow();
+        Poll poll = pollRepository.findById(pollId).orElseThrow(() -> new IllegalArgumentException("Poll not found with ID: " + pollId));
         List<Question> questions = poll.getQuestions();
         Set<QuestionBlock> questionsBlock = new HashSet<>();
         for (int i = 0; i < questions.size(); i++) {
