@@ -33,4 +33,8 @@ public class Question {
     @OneToOne
     @JoinColumn(name = "question_block")
     private QuestionBlock questionBlock;
+
+    public Question(QuestionBlock questionBlock) {
+        this.questionBlock = questionBlock;
+    }
 }
