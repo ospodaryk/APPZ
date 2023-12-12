@@ -12,7 +12,6 @@ public interface PollManager {
 
     void assignPoll(PollAssignmentDto pollAssignmentDto);
 
-
     public Poll findPollById(Long pollId, Long userId);
 
     public void savePollResults(ResponseDto responsePollDto);
