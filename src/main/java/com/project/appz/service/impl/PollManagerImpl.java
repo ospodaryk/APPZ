@@ -30,7 +30,6 @@ public class PollManagerImpl implements PollManager {
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
     private final UserRepository userRepository;
-    Logger logger;
 
     @Autowired
     public PollManagerImpl(PollRepository pollRepository, PollAssignmentRepository pollAssignmentRepository,
@@ -49,20 +48,13 @@ public class PollManagerImpl implements PollManager {
     }
 
     @Override
-    public void createPoll(Poll poll) {
-        // Implementation to create a poll
-    }
-
-    @Override
     public void assignPoll(PollAssignmentDto pollAssignmentDto) {
-        // Retrieve the Doctor, User, and Poll from the database using the provided IDs
         Doctor doctor = doctorRepository.findById(pollAssignmentDto.doctorId)
                 .orElseThrow(() -> new IllegalArgumentException("Doctor not found with ID: " + pollAssignmentDto.doctorId));
         User user = userRepository.findById(pollAssignmentDto.userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found with ID: " + pollAssignmentDto.userId));
         Poll poll = pollRepository.findById(pollAssignmentDto.pollId)
                 .orElseThrow(() -> new IllegalArgumentException("Poll not found with ID: " + pollAssignmentDto.pollId));
-        // Create a new PollAssignment entity using the retrieved objects and the deadline from the DTO
         PollAssignment pollAssignment = PollAssignment.builder()
                 .doctor(doctor)
                 .user(user)
@@ -72,36 +64,15 @@ public class PollManagerImpl implements PollManager {
                 .isCompleted(false) // Assuming you want to initialize this as false
                 .build();
 
-        // Save the PollAssignment entity to the database
         pollAssignmentRepository.save(pollAssignment);
 
         Notification notification = notificationManager.createNotification(pollAssignment);
         notificationManager.sendMessage(notification);
         Notification scheduledNotification = notificationManager.createDeadlineNotification(pollAssignment);
         notificationManager.scheduleNotification(scheduledNotification);
-        // Optionally, log the assignment
-        //logger.log("Assigned poll id " + poll.getId() + " to user id " + user.getId());
     }
 
 
-    @Override
-    public List<Statistic> getPollResults(Poll poll) {
-        // Implementation to get poll results
-        return new ArrayList<>();
-    }
-
-    public boolean isPollAssignedToUser(Poll poll, Long userId) {
-        //User user = poll.getUser();
-        PollAssignment assignedPoll = pollAssignmentRepository.findByPollIdAndUserId(userId, poll.getId());
-        if (assignedPoll == null) {
-            throw new NullPointerException("assignedPoll not found with ID: " + poll.getId());
-        }
-        User user = assignedPoll.getUser();
-        if (user == null) {
-            throw new NullPointerException("user not found with ID: " + userId);
-        }
-        return user.getId().equals(userId);
-    }
 
     @Override
     public Poll findPollById(Long pollId, Long userId) {
@@ -125,8 +96,8 @@ public class PollManagerImpl implements PollManager {
             Response response = Response.builder()
                     .user(user)
                     .poll(poll)
-                    .question(questionRepository.findById(key).orElseThrow(() -> new NullPointerException("Poll not found with ID: ")))
-                    .answer(answerRepository.findById(questions.get(key)).orElseThrow(() -> new NullPointerException("Poll not found with ID: ")))
+                    .question(questionRepository.findById(key).orElseThrow(() -> new NullPointerException("Question not found with ID: ")))
+                    .answer(answerRepository.findById(questions.get(key)).orElseThrow(() -> new NullPointerException("Answer not found with ID: ")))
                     .responseDate(LocalDate.now())
                     .build();
             responseRepository.save(response);

@@ -9,11 +9,8 @@ import java.util.List;
 
 
 public interface PollManager {
-    void createPoll(Poll poll);
 
     void assignPoll(PollAssignmentDto pollAssignmentDto);
-
-    List<Statistic> getPollResults(Poll poll);
 
     public Poll findPollById(Long pollId, Long userId);
 
