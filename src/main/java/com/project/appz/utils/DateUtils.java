@@ -1,15 +1,14 @@
 package com.project.appz.utils;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class DateUtils {
-    public static Date getCurrentDate() {
-        // Implementation to get the current date
-        return new Date();
+    public static LocalDate getCurrentDate() {
+        return LocalDate.now();
     }
 
-    public static String formatToString(Date date) {
-        // Implementation to get the current date
+    public static String formatToString(LocalDate date) {
         return date.toString();
     }
 }
