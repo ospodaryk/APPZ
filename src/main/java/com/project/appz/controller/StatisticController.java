@@ -4,14 +4,12 @@ import com.project.appz.models.dto.BigStatisticDto;
 import com.project.appz.models.dto.ShortPollDto;
 import com.project.appz.models.dto.StatisticDto;
 import com.project.appz.models.entities.Poll;
-
 import com.project.appz.models.entities.Statistic;
 import com.project.appz.repository.PollRepository;
 import com.project.appz.service.PollAssignmentService;
 import com.project.appz.service.QuestionService;
 import com.project.appz.service.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +22,7 @@ public class StatisticController {
     private PollAssignmentService pollAssignmentService;
     private QuestionService questionService;
     private PollRepository pollRepository;
+
     @Autowired
     public StatisticController(StatisticService statisticService, PollAssignmentService pollAssignmentService, QuestionService questionService, PollRepository pollRepository) {
         this.statisticService = statisticService;
@@ -31,7 +30,6 @@ public class StatisticController {
         this.questionService = questionService;
         this.pollRepository = pollRepository;
     }
-
 
 
     @GetMapping("/{blockId}")
@@ -58,8 +56,8 @@ public class StatisticController {
         } else {
             bigStatisticDto.setStatistic(statisticService.filterByPoll(pollId));
         }
-        Statistic statistic=statisticService.findById(pollId);
-        Poll poll=pollRepository.findById(statistic.getPoll().getId()).get();
+        Statistic statistic = statisticService.findById(pollId);
+        Poll poll = pollRepository.findById(statistic.getPoll().getId()).get();
         bigStatisticDto.setTitleOfPoll(poll.getPollTitle());
         bigStatisticDto.setFilterId(filterId);
         bigStatisticDto.setQuestionBlockSet(questionService.getQuestionBlockByPoll(userId, poll.getId()));

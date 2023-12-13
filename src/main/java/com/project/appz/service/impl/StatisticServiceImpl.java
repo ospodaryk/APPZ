@@ -4,8 +4,6 @@ import com.project.appz.models.dto.ResponseDto;
 import com.project.appz.models.dto.ResponseQuestionPollDto;
 import com.project.appz.models.dto.StatisticDto;
 import com.project.appz.models.entities.*;
-import com.project.appz.models.enums.Disease;
-import com.project.appz.models.enums.StatisticVariants;
 import com.project.appz.repository.*;
 import com.project.appz.service.PollAssignmentService;
 import com.project.appz.service.StatisticService;
@@ -14,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

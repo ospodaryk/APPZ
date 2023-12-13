@@ -1,6 +1,5 @@
 package com.project.appz.service.impl;
 
-import com.project.appz.models.dto.AnswerDto;
 import com.project.appz.models.dto.PollAssignmentDto;
 import com.project.appz.models.dto.ResponseDto;
 import com.project.appz.models.dto.ResponseQuestionPollDto;
@@ -9,13 +8,11 @@ import com.project.appz.repository.*;
 import com.project.appz.service.PollManager;
 import com.project.appz.service.notification.Notification;
 import com.project.appz.service.notification.NotificationManager;
-import com.project.appz.utils.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,7 +70,6 @@ public class PollManagerImpl implements PollManager {
     }
 
 
-
     @Override
     public Poll findPollById(Long pollId, Long userId) {
         return pollRepository.findById(pollId).orElseThrow(() -> new NullPointerException("Poll not found with ID: " + pollId));
@@ -85,12 +81,12 @@ public class PollManagerImpl implements PollManager {
 
         User user = userRepository.findById(responsePollDto.getUserId()).orElseThrow(() -> new NullPointerException("Poll not found with ID: "));
         Poll poll = pollRepository.findById(responsePollDto.getPollId()).orElseThrow(() -> new NullPointerException("Poll not found with ID: "));
-        List<ResponseQuestionPollDto> answerDtoList=responsePollDto.getAnswers();
+        List<ResponseQuestionPollDto> answerDtoList = responsePollDto.getAnswers();
 
         Map<Long, Long> questions = new HashMap<>();
         for (int i = 0; i < answerDtoList.size(); i++) {
-            ResponseQuestionPollDto responseQuestionPollDto=answerDtoList.get(i);
-            questions.put(responseQuestionPollDto.getQuestionId(),responseQuestionPollDto.getAnswerId());
+            ResponseQuestionPollDto responseQuestionPollDto = answerDtoList.get(i);
+            questions.put(responseQuestionPollDto.getQuestionId(), responseQuestionPollDto.getAnswerId());
         }
         for (Long key : questions.keySet()) {
             Response response = Response.builder()

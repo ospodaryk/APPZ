@@ -1,4 +1,5 @@
 package com.project.appz.utils;
+
 import java.io.PrintStream;
 
 public class Logger {

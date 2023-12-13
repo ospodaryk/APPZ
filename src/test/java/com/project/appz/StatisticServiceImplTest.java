@@ -7,19 +7,20 @@ import com.project.appz.models.entities.*;
 import com.project.appz.repository.*;
 import com.project.appz.service.PollAssignmentService;
 import com.project.appz.service.impl.StatisticServiceImpl;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.orm.ObjectOptimisticLockingFailureException;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
-import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.anyLong;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class StatisticServiceImplTest {
@@ -180,17 +181,20 @@ class StatisticServiceImplTest {
 
         assertThrows(NullPointerException.class, () -> statisticService.saveData(responseDto));
     }
+
     @Test
-    void testSaveDataPollNotFound_Success() {
+    void testSaveData_Success() {
         ResponseDto responseDto = new ResponseDto(); // Set up your ResponseDto
         when(userRepository.findById(anyLong())).thenReturn(Optional.of(ModelUtils.getUser()));
         when(pollRepository.findById(anyLong())).thenReturn(Optional.of(ModelUtils.getPoll()));
-        when(questionRepository.findById(null)).thenReturn(Optional.of(ModelUtils.getQuestion()));
+        when(questionRepository.findById(anyLong())).thenReturn(Optional.of(ModelUtils.getQuestion()));
 
         when(answerRepository.findById(anyLong())).thenReturn(Optional.of(ModelUtils.getAnswer()));
+        responseDto.setAnswers(Arrays.asList(ResponseQuestionPollDto.builder().answerId(1L).questionId(1L).build()));
 
-        assertThrows(NullPointerException.class, () -> statisticService.saveData(responseDto));
+        statisticService.saveData(responseDto);
     }
+
     @Test
     void testSaveDataUserNotFound() {
         ResponseDto responseDto = new ResponseDto(); // Set up your ResponseDto
@@ -198,7 +202,6 @@ class StatisticServiceImplTest {
 
         assertThrows(NullPointerException.class, () -> statisticService.saveData(responseDto));
     }
-
 
 
     @Test

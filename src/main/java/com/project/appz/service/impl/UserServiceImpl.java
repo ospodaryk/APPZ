@@ -43,7 +43,8 @@ public class UserServiceImpl implements UserService {
                 .findAny().orElseThrow();
         return findAll(user.getId());
     }
-@Override
+
+    @Override
     public ProfileDto findAll(Long userId) {
         LOGGER.log(Level.INFO, "Finding profile for user with ID: " + userId);
         List<MedicalRecord> medicalRecords = medicalRecordService.getRecordByPatient(userId);

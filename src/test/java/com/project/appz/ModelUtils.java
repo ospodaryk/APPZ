@@ -1,14 +1,12 @@
 package com.project.appz;
 
 import com.project.appz.models.entities.*;
-import com.project.appz.models.enums.Disease;
 import com.project.appz.models.enums.Specialization;
-import com.project.appz.models.entities.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
-import java.time.LocalDate;
 
 public final class ModelUtils {
     public static Cabinet getCabinet() {

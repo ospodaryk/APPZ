@@ -1,4 +1,5 @@
 package com.project.appz;
+
 import com.project.appz.models.entities.Poll;
 import com.project.appz.models.entities.Question;
 import com.project.appz.models.entities.QuestionBlock;
@@ -9,17 +10,16 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import static org.mockito.Mockito.when;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
 class QuestionServiceImplTest {
-@InjectMocks
+    @InjectMocks
     private QuestionServiceImpl questionService;
 
     @Mock

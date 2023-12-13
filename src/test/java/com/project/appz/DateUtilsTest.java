@@ -1,8 +1,12 @@
 package com.project.appz;
+
 import com.project.appz.utils.DateUtils;
 import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class DateUtilsTest {
 
