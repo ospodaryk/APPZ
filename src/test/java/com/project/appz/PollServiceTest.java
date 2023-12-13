@@ -5,15 +5,9 @@ import com.project.appz.models.dto.ResponseDto;
 import com.project.appz.models.dto.ResponseQuestionPollDto;
 import com.project.appz.models.entities.Poll;
 import com.project.appz.models.entities.PollAssignment;
-import com.project.appz.models.entities.Response;
 import com.project.appz.repository.*;
-import com.project.appz.service.PollManager;
 import com.project.appz.service.impl.PollManagerImpl;
 import com.project.appz.service.notification.NotificationManager;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,12 +15,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Optional;
 
-import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class PollServiceTest {
@@ -95,10 +88,7 @@ public class PollServiceTest {
 
         // Perform the action
         Poll result = pollManager.findPollById(1L, 1L);
-
-        // Verify the result
         assertNotNull(result);
-        // Additional assertions as per your logic
     }
 
     @Test

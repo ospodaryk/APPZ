@@ -38,7 +38,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public ProfileDto findAll(String userId) {
         LOGGER.log(Level.INFO, "Finding profile for user with email: " + userId);
-        User user = userRepository.findAll().stream().filter(obj -> obj.getEmail().equals(userId)).findAny().orElseThrow();
+        User user = userRepository.findAll().stream()
+                .filter(obj -> obj.getEmail().equals(userId))
+                .findAny().orElseThrow();
         return findAll(user.getId());
     }
 

@@ -1,15 +1,12 @@
 package com.project.appz;
+
 import com.project.appz.utils.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.io.PrintStream;
-
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 class LoggerTest {
 

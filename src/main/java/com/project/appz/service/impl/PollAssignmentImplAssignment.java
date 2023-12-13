@@ -5,7 +5,9 @@ import com.project.appz.models.dto.ShortPollDto;
 import com.project.appz.models.entities.PollAssignment;
 import com.project.appz.models.entities.Response;
 import com.project.appz.models.entities.Statistic;
-import com.project.appz.repository.*;
+import com.project.appz.repository.PollAssignmentRepository;
+import com.project.appz.repository.ResponseRepository;
+import com.project.appz.repository.StatisticRepository;
 import com.project.appz.service.PollAssignmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,25 +18,17 @@ import java.util.List;
 
 @Service
 public class PollAssignmentImplAssignment implements PollAssignmentService {
-    private final PollRepository pollRepository;
     private final PollAssignmentRepository pollAssignmentRepository;
-
     private final ResponseRepository responseRepository;
-    private final QuestionRepository questionRepository;
-    private final AnswerRepository answerRepository;
-    private final UserRepository userRepository;
     private final StatisticRepository statisticRepository;
 
     @Autowired
-    public PollAssignmentImplAssignment(PollRepository pollRepository, PollAssignmentRepository pollAssignmentRepository, ResponseRepository responseRepository, QuestionRepository questionRepository, AnswerRepository answerRepository, UserRepository userRepository, StatisticRepository statisticRepository) {
-        this.pollRepository = pollRepository;
+    public PollAssignmentImplAssignment(PollAssignmentRepository pollAssignmentRepository, ResponseRepository responseRepository, StatisticRepository statisticRepository) {
         this.pollAssignmentRepository = pollAssignmentRepository;
         this.responseRepository = responseRepository;
-        this.questionRepository = questionRepository;
-        this.answerRepository = answerRepository;
-        this.userRepository = userRepository;
         this.statisticRepository = statisticRepository;
     }
+
 
     @Override
     @Transactional

@@ -3,7 +3,7 @@ package com.project.appz.service.impl;
 import com.project.appz.models.entities.Poll;
 import com.project.appz.models.entities.Question;
 import com.project.appz.models.entities.QuestionBlock;
-import com.project.appz.repository.*;
+import com.project.appz.repository.PollRepository;
 import com.project.appz.service.QuestionService;
 import com.project.appz.utils.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
