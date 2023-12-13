@@ -51,7 +51,7 @@ class MedicalRecordServiceImplTest {
 
     @Test
     void createRecord_NullRecord_ThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> service.createRecord(null));
+        assertThrows(NullPointerException.class, () -> service.createRecord(null));
     }
 
     @Test
@@ -64,7 +64,7 @@ class MedicalRecordServiceImplTest {
 
     @Test
     void updateRecord_NullRecord_ThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> service.updateRecord(null));
+        assertThrows(NullPointerException.class, () -> service.updateRecord(null));
     }
 
     @Test
@@ -102,17 +102,17 @@ class MedicalRecordServiceImplTest {
 
     @Test
     void getRecordByDiseaseAndPatient_NullInputs_ThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> service.getRecordByDiseaseAndPatient(null, null));
+        assertThrows(NullPointerException.class, () -> service.getRecordByDiseaseAndPatient(null, null));
     }
 
     @Test
     void getRecordByDiseaseAndPatient_NullInputUser_ThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> service.getRecordByDiseaseAndPatient(null, Disease.ACNE));
+        assertThrows(NullPointerException.class, () -> service.getRecordByDiseaseAndPatient(null, Disease.ACNE));
     }
 
     @Test
     void getRecordByDiseaseAndPatient_NullInputDisese_ThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> service.getRecordByDiseaseAndPatient(ModelUtils.getUser(), null));
+        assertThrows(NullPointerException.class, () -> service.getRecordByDiseaseAndPatient(ModelUtils.getUser(), null));
     }
 
     @Test

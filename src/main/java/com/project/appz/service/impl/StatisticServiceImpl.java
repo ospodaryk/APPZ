@@ -45,8 +45,8 @@ public class StatisticServiceImpl implements StatisticService {
 
     @Override
     public void saveData(ResponseDto responseDto) {
-        User user = userRepository.findById(responseDto.getUserId()).orElseThrow(() -> new NullPointerException("Poll not found with ID: "));
-        Poll poll = pollRepository.findById(responseDto.getPollId()).orElseThrow(() -> new NullPointerException("Poll not found with ID: "));
+        User user = userRepository.findById(responseDto.getUserId()).orElseThrow(() -> new NullPointerException("User not found with ID: " + responseDto.getUserId()));
+        Poll poll = pollRepository.findById(responseDto.getPollId()).orElseThrow(() -> new NullPointerException("Poll not found with ID: " + responseDto.getPollId()));
         Statistic statistic = Statistic.builder().build();
         statistic.setUser(user);
         statistic.setPoll(poll);
@@ -59,37 +59,36 @@ public class StatisticServiceImpl implements StatisticService {
             questions.put(responseQuestionPollDto.getQuestionId(), responseQuestionPollDto.getAnswerId());
         }
         for (Long key : questions.keySet()) {
-            Question question = questionRepository.findById(key).orElseThrow(() -> new NullPointerException("Poll not found with ID: "));
-            Answer answerUser = answerRepository.findById(questions.get(key)).orElseThrow(() -> new NullPointerException("Poll not found with ID: "));
+            Question question = questionRepository.findById(key).orElseThrow(() -> new NullPointerException("Question not found with ID: " + key));
+            Answer answerUser = answerRepository.findById(questions.get(key)).orElseThrow(() -> new NullPointerException("Answer not found with ID: " + questions.get(key)));
             if (question.getCorrectAnswer().equals(answerUser)) {
                 result++;
             }
         }
-        statistic.setResult(Long.valueOf(((result * 100)/ questions.size())));
+        statistic.setResult(Long.valueOf(((result * 100) / questions.size())));
         statisticRepository.save(statistic);
         int maxRetries = 3;
         int retryCount = 0;
 
         while (retryCount < maxRetries) {
             try {
-                // Perform the operation that may cause optimistic locking
                 pollAssignmentService.save(responseDto);
-                break; // Break out of the loop if successful
+                break;
             } catch (ObjectOptimisticLockingFailureException ex) {
                 retryCount++;
-                // Log or handle the exception if needed
             }
         }
     }
 
     @Override
     public Statistic findById(Long statisticId) {
-      return statisticRepository.findById(statisticId).orElseThrow();
+        return statisticRepository
+                .findById(statisticId).orElseThrow();
     }
+
     @Override
     public StatisticDto filterByPoll(Long statisticId) {
         Statistic statistic = statisticRepository.findById(statisticId).orElseThrow();
-
         StatisticDto statisticDto = new StatisticDto();
         statisticDto.setPositive(Double.valueOf(statistic.getResult()));
         statisticDto.setNegative(Double.valueOf(100 - statistic.getResult()));
@@ -99,7 +98,6 @@ public class StatisticServiceImpl implements StatisticService {
     @Override
     public StatisticDto filterByBlockAndPoll(Long patient, Long statisticpollId, Long blockId) {
         Statistic statistics = statisticRepository.findById(statisticpollId).orElseThrow();
-
         List<Response> responses = responseRepository.findByUserIdAndPollId(patient, statistics.getPoll().getId())
                 .stream()
                 .filter(response -> response.getPoll().getQuestions()
@@ -114,7 +112,6 @@ public class StatisticServiceImpl implements StatisticService {
             }
         }
         Double statistic;
-
         try {
             statistic = Double.valueOf((result * 100) / responses.size());
         } catch (ArithmeticException ex) {
@@ -143,7 +140,7 @@ public class StatisticServiceImpl implements StatisticService {
                 result++;
             }
         }
-        Double statistic = Double.valueOf(((result * 100)/ responses.size()) );
+        Double statistic = Double.valueOf(((result * 100) / responses.size()));
         StatisticDto statisticDto = new StatisticDto();
 
         statisticDto.setPositive(Double.valueOf(statistic));
@@ -151,25 +148,4 @@ public class StatisticServiceImpl implements StatisticService {
 
         return statisticDto;
     }
-
-    @Override
-    public List<StatisticDto> filterByDisease(Long patient, String disease) {
-        return null;
-    }
-
-    @Override
-    public List<Integer> getStatistic(User user, Disease disease) {
-        return null;
-    }
-
-    @Override
-    public List<Integer> getStatistic(User user, Disease disease, Poll poll) {
-        return null;
-    }
-
-    @Override
-    public List<Integer> getStatistic(User user, Disease disease, Poll poll, Date date) {
-        return null;
-    }
-
 }

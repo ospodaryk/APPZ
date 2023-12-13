@@ -16,25 +16,17 @@ import java.util.List;
 
 @Service
 public class PollAssignmentImplAssignment implements PollAssignmentService {
-    private final PollRepository pollRepository;
     private final PollAssignmentRepository pollAssignmentRepository;
-
     private final ResponseRepository responseRepository;
-    private final QuestionRepository questionRepository;
-    private final AnswerRepository answerRepository;
-    private final UserRepository userRepository;
     private final StatisticRepository statisticRepository;
 
     @Autowired
-    public PollAssignmentImplAssignment(PollRepository pollRepository, PollAssignmentRepository pollAssignmentRepository, ResponseRepository responseRepository, QuestionRepository questionRepository, AnswerRepository answerRepository, UserRepository userRepository, StatisticRepository statisticRepository) {
-        this.pollRepository = pollRepository;
+    public PollAssignmentImplAssignment(PollAssignmentRepository pollAssignmentRepository, ResponseRepository responseRepository, StatisticRepository statisticRepository) {
         this.pollAssignmentRepository = pollAssignmentRepository;
         this.responseRepository = responseRepository;
-        this.questionRepository = questionRepository;
-        this.answerRepository = answerRepository;
-        this.userRepository = userRepository;
         this.statisticRepository = statisticRepository;
     }
+
 
     @Override
     @Transactional

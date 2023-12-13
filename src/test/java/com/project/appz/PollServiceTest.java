@@ -95,10 +95,7 @@ public class PollServiceTest {
 
         // Perform the action
         Poll result = pollManager.findPollById(1L, 1L);
-
-        // Verify the result
         assertNotNull(result);
-        // Additional assertions as per your logic
     }
 
     @Test

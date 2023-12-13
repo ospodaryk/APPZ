@@ -38,11 +38,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public ProfileDto findAll(String userId) {
         LOGGER.log(Level.INFO, "Finding profile for user with email: " + userId);
-        User user = userRepository.findAll().stream().filter(obj -> obj.getEmail().equals(userId)).findAny().orElseThrow();
+        User user = userRepository.findAll().stream()
+                .filter(obj -> obj.getEmail().equals(userId))
+                .findAny().orElseThrow();
         return findAll(user.getId());
     }
-
-    @Override
+@Override
     public ProfileDto findAll(Long userId) {
         LOGGER.log(Level.INFO, "Finding profile for user with ID: " + userId);
         List<MedicalRecord> medicalRecords = medicalRecordService.getRecordByPatient(userId);

@@ -15,17 +15,9 @@ public interface StatisticService {
 
     public void saveData(ResponseDto responseDto);
 
-
-    List<Integer> getStatistic(User user, Disease disease);
-
-    List<Integer> getStatistic(User user, Disease disease, Poll poll);
-
-    List<Integer> getStatistic(User user, Disease disease, Poll poll, Date date);
-
     StatisticDto filterByBlock(Long patient, Long blockId);
 
     public StatisticDto filterByBlockAndPoll(Long patient, Long pollId, Long blockId);
 
-    public List<StatisticDto> filterByDisease(Long patient, String disease);
     Statistic findById(Long statisticId);
 }
