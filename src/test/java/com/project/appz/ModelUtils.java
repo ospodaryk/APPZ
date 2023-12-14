@@ -50,7 +50,6 @@ public final class ModelUtils {
                 .build();
     }
 
-    // Updating getQuestion method to include answers
     public static Question getQuestionWithAnswers() {
         return Question.builder()
                 .id(1L)
